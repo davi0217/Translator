@@ -1,0 +1,41 @@
+main{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rosybrown;
+    box-sizing: border-box;
+    padding:0px;
+}
+
+
+ul{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+
+.wordContainer{
+
+    min-width:280px;
+    
+    background-color:antiquewhite;
+    text-align:left;
+    border:1px solid black;
+}
+
+li{
+    list-style: none;
+   
+}
+
+.overlined{
+    background-color: rgb(139, 23, 23);
+    color: rgb(139, 23, 23);
+    border:3px solid burlywood;
+    border-radius:0px 10px 10px 0px;
+}
+
+.originalWord{
+    display:inline-block;
+    width:30%;
+    cursor:pointer;
+    padding:5%;
+}
