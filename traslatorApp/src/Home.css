@@ -3,9 +3,10 @@
 main{
     
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-     background-color: rosybrown;
+     background-color: rgb(172, 110, 110);
     box-sizing: border-box;
-    padding:0
+    padding-bottom:1000px;
+
 }
 
 nav{

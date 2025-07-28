@@ -4,18 +4,22 @@ import { BrowserRouter } from 'react-router'
 import {Routes, Route} from 'react-router'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+import Home from './Home.jsx'
 import Verbes from './Verbes.jsx'
+import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-<Routes>
 
-    <Route path="/" element={<App/>} />
-    <Route path="/verbes" element={<Verbes/>} />
+    <App>
+      <BrowserRouter>
+      <Routes>  
 
-</Routes>
-</BrowserRouter>
+        <Route path="/" element={<Home/>} />
+        <Route path="/verbes" element={<Verbes/>} />
+
+      </Routes>
+      </BrowserRouter>
+    </App>
   </StrictMode>,
 )

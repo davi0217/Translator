@@ -3,6 +3,7 @@ main{
     background-color: rosybrown;
     box-sizing: border-box;
     padding:0px;
+    padding-bottom:20%;
 }
 
 
@@ -39,3 +40,47 @@ li{
     cursor:pointer;
     padding:5%;
 }
+
+.current{
+    background-color: red;
+}
+
+button{
+    cursor:p
+}
+
+.gameRulesContainer{
+    
+ 
+    width:80%;
+    margin:0 auto;
+    padding:20px;
+   
+}
+
+.gameRulesContainer form{
+    padding-top:20px;
+    
+    display:flex;
+    justify-content: center;
+   
+}
+
+.gameRulesContainer table{
+    text-align: left;
+    width:50%;
+  
+    border-spacing:30px;
+    border:2px solid brown;
+    border-radius:15px;
+
+    background-color: bisque;
+    
+}
+
+.gameRulesContainer td:first-child{
+    text-align:right;
+ 
+   
+}
+
