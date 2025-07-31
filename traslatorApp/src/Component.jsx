@@ -1,35 +1,46 @@
-import {useState,useRef, useEffect, useContext} from 'react'
+import {useState,useRef, useEffect, useContext, act} from 'react'
 
 import { useDisplayVerbes } from './useDisplayVerbes.js'
+import {useParams} from 'react-router-dom'
 
 import {Navigator} from './Home.jsx'
 import './Component.css'
 import { WordsContext } from './App.jsx'
-import { useSearch } from './useSearch.js'
 
-export  default function Verbes(){
+import trash from './assets/trash-can.svg'
 
-     const {verbes, buttons, counters, currentButton, playingGame, updateCounter, setToCurrent, handleStartPlaying, showWord}=useDisplayVerbes()
+export  default function Component(){
+
+     const {verbes, buttons, counters, currentButton, updateCounter, setToCurrent, actualCounter}=useDisplayVerbes()
+     const {handleOverMenu, showWord, playingGame, handleStartPlaying, removeData, handleWordFromUrl, wordFromUrl}=useContext(WordsContext)
+
+     const {filter}=useParams()
+   useEffect(()=>{
+    handleWordFromUrl(filter)
+   },[filter])
 
     return <>
+    <main onClick={(e)=>{
+        console.log(e.target.className)
+    if((e.target.className!="navContainer-reduced")&&(e.target.className!="menu-alt-logo")){
+
+      handleOverMenu(false)
+    }
+   }}>
  
-    <Navigator/>
+    <Navigator wordFromUrl={wordFromUrl}/>
 
-    {!playingGame &&  <main>
+    {!playingGame &&  <div className="Component">
 
-    <label htmlFor="wordsToShow">Words showing: </label>
-    <select name="wordsToShow" id="wordsToShow" onChange={(v)=>{
+    <label className="wordsToShowLabel" htmlFor="wordsToShow">Paroles montrées: </label>
+    <select  className="wordsToShow" name="wordsToShow" id="wordsToShow" onChange={(v)=>{
         updateCounter(v.target.value)
     }}>
 
         {
             counters.map((c)=>{
                 
-                if(c==10){
-                    return <option value="10" default>10</option>
-                }else{
-                    return <option value={c}>{c}</option>
-                }
+               return <option value={c} selected={c==actualCounter}>{c}</option>
             }
         )
     }
@@ -55,9 +66,9 @@ export  default function Verbes(){
         })}
     </div>
 
-    <button onClick={()=>{
+    <button  className="startPlaying" onClick={()=>{
         handleStartPlaying()
-    }}> Start playing</button>
+    }}> Jouer</button>
     
     <ul>
         {verbes && verbes.map((word)=>{
@@ -68,37 +79,33 @@ export  default function Verbes(){
     <p> <span className={word.hidden?"originalWord overlined":"originalWord"} onClick={()=>{
        showWord(word)
     }}>{word.original}</span>: <span> {word.translation}</span> </p>
+   <button onClick={()=>{
+    removeData(word)
+   }}><img src={trash}></img></button>
     </li>
   </div>
-  
-
-
 
 })}
         
     </ul>
     
-    </main>}
-
-
-    {playingGame&& <main>
+    </div>}
+    </main>
+    {playingGame && <main>
         
         <GameRules/>
-
-
-        
-        
+    
         </main>}
 </>
 }
 
 function GameRules({}){
 
-    const [rules, setRules]=useState({"number": 0,"time":0})
+    const [rules, setRules]=useState({"number": 5,"time":5, "automatique":false})
     const [started, setStarted]=useState(false)
 
 
-    const {data, formatVerbes}=useContext(WordsContext)
+    const {formattedVerbes}=useContext(WordsContext)
     const handleRules=function(obj){
         setRules(obj)
     }
@@ -116,7 +123,7 @@ function GameRules({}){
 
         <form action="post" onSubmit={(e)=>{
             e.preventDefault()
-            handleRules({"number":e.target.number.value, "time":e.target.minutos.value})
+            handleRules({"number":e.target.number.value, "time":e.target.minutos.value, "automatique":e.target.automatique.checked})
             startGame()
 
         }}>
@@ -124,7 +131,7 @@ function GameRules({}){
             <tbody>
             <tr>
                 <td>Nombre de paroles</td>
-                <td><input type="number" name="number" max={formatVerbes(data,"Verbe").length} min={0} step={5}/></td>
+                <td><input type="number" name="number" max={formattedVerbes.length} min={0} defaultValue={5} step={5}/></td>
             </tr>
             <tr>
                 <td>Temps</td>
@@ -136,7 +143,7 @@ function GameRules({}){
             </tr>
             <tr>
                 <td>Automatique</td>
-                <td><input type="checkbox"/></td>     
+                <td><input name="automatique" type="checkbox"/></td>     
             </tr>
             <tr>
 
@@ -157,35 +164,22 @@ function GameRules({}){
 
 function Game({rules}){
 
-    const {formattedVerbes}=useDisplayVerbes()
+    
+    const {formattedVerbes, showWord, handleStartPlaying}=useContext(WordsContext)
     const [playing, setPlaying]=useState(true)
     const [clock, setClock]=useState(rules.time*60)
     const [numberPlaying, setNumberPlaying]=useState(Math.floor(Math.random()*formattedVerbes.length))
     const [numbersPlayed,setNumbersPlayed]=useState([numberPlaying])
-
-    const {showWord}=useDisplayVerbes()
-
+    
+    
+    let wordsLeft=useRef(1)
+    let secondsPassed=useRef(0)
+    
     console.log("arriving in game, formattedverbes are "+formattedVerbes[numberPlaying].hidden)
-
-    useEffect(()=>{
-       
-
-        setTimeout(()=>{
-
-
-            setClock(clock-1)
-            if(clock==0){
-                setPlaying(false)
-            }
-
-        },1000)
-
-        
-
-    },[clock])
-
-   
-
+    
+    console.log("seconds passed:"+secondsPassed.current)
+    
+    
     const handleNext=function(){
 
         let keepGoing=true
@@ -202,20 +196,47 @@ function Game({rules}){
             let newPlayed=numbersPlayed.map((e)=>{
                 return e
             })
+            wordsLeft.current++
             newPlayed.push(newNumber)
             setNumbersPlayed(newPlayed)
             if(newPlayed.length>=(Number.parseInt(rules.number)+1)){
-                setPlaying(false)
+                handleStartPlaying()
                 break
             }
             keepGoing=false}
         }    
     }
 
+    useEffect(()=>{
+        secondsPassed.current++
+        setTimeout(()=>{
 
+
+            setClock(clock-1)
+            if(clock==0){
+                setPlaying(false)
+            }
+
+        },1000)
+
+        if(rules.automatique&&(secondsPassed.current%3===0&&secondsPassed.current>3)){
+            handleNext()          
+            
+        }
+
+        if(rules.automatique&&((secondsPassed.current+1)%3===0&&(secondsPassed.current+1)>3)){
+            showWord(formattedVerbes[numberPlaying])
+        }
+     }
+    ,[clock])
+
+    
+    
     return <>
 
-    {playing &&<main>
+    {(playing)&&<main className="gameBoard">
+
+        <p>{rules.automatique?"Playing automatique":""}</p>
     <p><span>{Math.trunc(clock/60)}</span>: <span>{clock%60}</span> left</p>
 
     <div>
@@ -226,13 +247,16 @@ function Game({rules}){
     }}>{formattedVerbes[numberPlaying].original}</span>: <span> {formattedVerbes[numberPlaying].translation}</span> </p>
     </li>
   </div>
-        <button onClick={()=>{
+        <button  style={rules.number==wordsLeft.current?{backgroundColor:"red"}:{}}onClick={()=>{
             handleNext()
-        }}>Check</button>
+        }}>{rules.number==wordsLeft.current?"Finish":"Check"}</button>
 
     </div>
+
+    <p>Words displayed: <span>{wordsLeft.current}</span> / {rules.number}</p>
     </main>
     }
+    
     </>
 
 

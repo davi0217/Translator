@@ -1,9 +1,7 @@
-
-
 main{
     
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-     background-color: rgb(172, 110, 110);
+    font-family: Saira;
+    background-color: rgb(245, 217, 196);
     box-sizing: border-box;
     padding-bottom:1000px;
 
@@ -17,11 +15,13 @@ nav{
     display:flex;
     justify-content: space-around;
     vertical-align: middle;
+ 
 }
 
 nav a{
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:Saira;
     font-size:20px;
+    line-break: auto;
     background-color: antiquewhite;
     text-decoration: none;
     align-self: center;
@@ -32,15 +32,25 @@ nav a{
 }
 
 nav a:hover{
-    background-color: rgba(229, 166, 104, 0.185);
-    color:white;
+    background-color: rgb(251, 227, 203); 
+    color:rgb(249, 145, 145);
     font-weight: bolder;
+    text-decoration: underline;
     cursor:pointer;
+    border-left: 1px solid brown;
+   
+    border-right: 1px solid brown;
+   
+}
+
+.navContainer-reduced{
+    display:none;
+    
 }
 
 
 h1{
-    width:100%;
+    width:60%;
     text-align: center;
     font-size:25px;
     color:brown;
@@ -48,37 +58,62 @@ h1{
 }
 
 h2{
-    width:100%;
+    width:60%;
     text-align: center;
     font-size:20px;
     color:rgb(112, 29, 29);
-    margin-bottom:5%;
+    margin-bottom:-3%;
    
 }
 
-form{
-    width:100%;
- 
-    color:brown;
- 
-
-
+.searchForm{
+  
+    padding-left:5%;
+    margin-right:5%;
+    width:60%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+   
 }
 
 label{
     margin-right:2%;
     margin-left:4%;
+    color:brown;
+  
+}
 
+select{
+    
+    height: 30px;
+    font-size:15px;
+    font-family: Saira;
+    background-color: beige;
+    color:brown;
+    border-radius:10px;
+    border:2px solid brown;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.inputContainer{
+  
+    width:200px;
+    margin-top:2%;
+    padding-right: 5px;
+    padding-left: 5px;
   
 }
 
 input[type="submit"]{
-    margin-left:4%;
-
-    margin-top:2%;
-
+   
+    
+   
+    
     padding:6px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family:Saira;
     color:white;
     background-color: rgb(237, 167, 63);
     font-size:17px;
@@ -86,7 +121,276 @@ input[type="submit"]{
     border-radius:10px;
     border:2px solid brown;
     cursor:pointer;
-
+    align-self: center;
+    
+    
 
 }
 
+.self-introduction-form{
+    border-radius:10px 0px 0px 10px;
+    border:1px solid brown;
+    border-right:none;
+    width:30%;
+    height: 250px;
+    padding:10px;
+    display:flex;
+    flex-direction: column; 
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    margin-top:5%;
+    background-color: rgb(223, 174, 146);
+
+    position:relative;
+    bottom:120px;
+}
+
+.self-introduction-form:hover{
+    background-color: bisque ;
+    transition:background-color 0.3s ease;
+}
+
+.self-introduction-form input{
+    width:80%;
+    height: 50px;
+    font-size:15px;
+    font-family: Saira;
+    background-color: beige;
+    color:brown;
+    border-radius:10px;
+    border:2px solid brown;
+    padding-left:10px;
+}
+
+.self-introduction-form input[type="submit"]{
+    
+    background-color: rgb(124, 76, 3);
+    color:rgb(64, 4, 4);
+    font-weight: bold;
+    font-size:20px;
+    position:relative;
+    bottom:15px;
+    margin-top:10%;
+    
+
+}
+
+.arrow-logo{
+    margin-left:10px;
+   
+    min-width:10px;
+}
+.self-introduction-options{
+    text-align: center;  
+}
+.self-introduction-options input{
+    margin-bottom:5px; 
+}
+
+
+.formsContainer{
+    display:flex;
+}
+
+.translation{
+    border-radius:10px;
+    margin:0 auto;
+    width:60%;
+    background-color: blue;
+    text-align: center;
+    padding:5px;
+    border:2px solid brown;
+    background-color: rosybrown;
+}
+
+.translation h1{
+    width:100%;
+    text-align: center;
+}
+.translation input:hover{
+
+    background-color: green;
+    color:black;
+    font-weight: bolder;
+    transition: color 0.2s ease, background-color 0.2s ease, font-weight 0.2s ease;
+
+}
+
+@media(max-width:830px){
+
+    .navContainer{
+        display:none;
+    }
+
+    .navContainer-reduced{
+    width:100%;
+    background-color: brown;
+    height: 100px;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    vertical-align: middle;
+    cursor:pointer;
+    }
+
+    .navContainer-reduced:hover{
+        background-color: rgb(207, 108, 108);
+        transition:background-color 0.2s ease;
+    }
+
+    .navContainer-reduced img{
+        min-width:40px;
+        margin:0 auto;
+        
+    }
+    .altNav{
+       
+        padding:0px;
+        background-color: blue;
+        
+    }
+
+    .altNav nav{
+       
+        position:absolute;
+        top:110px;
+        display:flex;
+        flex-direction: column;
+        padding:0px;
+        z-index:99999;
+    }
+
+    .altNav nav a{
+        font-size:15px;
+        padding:0px;
+        height: 50px;
+        display:flex;
+        text-align: center;
+        vertical-align: middle;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .hidden{
+        display:none
+    }
+
+    h1, h2, .formsContainer{
+        margin:0 auto;
+    }
+    h1{
+        padding-top:10px;
+    }
+
+    h2{
+        font-size: 15px;
+    }
+
+    .formsContainer{
+        width: 100%;
+        display:flex;
+        flex-direction:column;
+      
+      align-items: center;
+
+    }
+
+    .searchForm{
+   
+    width:60%;
+    margin-top:5%;
+    
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    }
+
+    .self-introduction-form{
+        cursor:pointer;
+    border-radius:10px;
+    border:1px solid brown;
+    
+    width:60%;
+    height: 250px;
+    padding:10px;
+    display:flex;
+    flex-direction: column; 
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin-top:30%;
+    background-color: rgb(223, 174, 146);
+
+}
+
+.self-introduction-form label{
+    cursor:pointer;
+}
+
+    .self-introduction-form-reduced{
+        cursor:pointer;
+        margin-top:30%;
+        border-radius:10px;
+        border-right:2px solid brown;
+        width:60%;      
+        height: 50px;
+        display: flex;
+        background-color: rgb(223, 174, 146); 
+
+        align-items: center;
+    }
+
+    .self-introduction-form-reduced img{
+        background-color: rgb(253, 162, 113);
+        border-radius:20px;
+        align-self: center;
+        position:relative;
+        top:2px;
+        padding:2px;
+    }
+    .self-introduction-form-reduced label{
+        display:flex;
+        align-items: center;
+        justify-content:center;
+        vertical-align: middle;
+        align-content: center;
+    }
+    .self-introduction-form-reduced:hover{
+        cursor:pointer;
+        color:white;
+        background-color: rgb(156, 67, 16); 
+    }
+    .self-introduction-form-reduced:hover label{
+        cursor:pointer;
+        color:white;
+        transition:color 0.2s ease;
+        
+    }
+
+    .loading-message{
+        margin-top:-90px;
+    }
+    
+    .translation h1{
+        font-size: 19px;
+    }
+
+    .translation input{
+        margin-top:5px;
+        font-size:15px;
+    }
+    
+}
+
+@media(max-width:730px){
+    .self-introduction-form{
+        margin-top:150px;
+    }
+}

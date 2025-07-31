@@ -4,15 +4,17 @@ import { WordsContext } from './App.jsx'
 
 export function useDisplayVerbes(){
 
-        const {data, formatVerbes}=useContext(WordsContext)
-        const [formattedVerbes, setFormattedVerbes]=useState(formatVerbes(data,"Verbe"))
+        const {formattedVerbes, wordFromUrl}=useContext(WordsContext)
         const [verbes, setVerbes]=useState()
         const [counters,setCounters]=useState([])
         const [actualCounter,setActualCounter]=useState(10)
         const [buttons, setButtons]=useState([])
         const [currentButton, setCurrentButton]=useState(0)
         const [playingGame, setPlayingGame]=useState(false)
-    
+
+
+
+       
         useEffect(()=>{
         
             let newButtons=[];
@@ -31,22 +33,37 @@ export function useDisplayVerbes(){
             setButtons(newButtons)
     
         }, [formattedVerbes])
+
+        useEffect(()=>{
+        console.log(currentButton+"is current button")
+        console.log(formattedVerbes.length+"is Formatted verbes lenght")
+            if(currentButton*30>=formattedVerbes.length){
+                setToCurrent(currentButton-1)
+            }
+
+        console.log("after trying current button is "+currentButton)
+
+        },[buttons])
+
+        useEffect(()=>{
+            setCurrentButton(0)
+        }, [wordFromUrl])
           
     
         useEffect(()=>{
-            
+
             let newVerbesToShow=formattedVerbes.slice(currentButton*30,formattedVerbes.length).slice(0,actualCounter)
             setVerbes(newVerbesToShow)
-            console.log(newVerbesToShow)
            
-        },[actualCounter, currentButton])
+           
+        },[actualCounter, currentButton, formattedVerbes])
           
         useEffect(()=>{
             let newCounters=[10]
             
-            for(let i=1; i<formattedVerbes.slice(currentButton*30,formattedVerbes.length).length; i++){
-                if (i%10===0&&i>10){
-                    newCounters.push(i)
+            for(let i=1; i<=formattedVerbes.slice(currentButton*30,formattedVerbes.length).length; i++){
+                if (i%10===0&&i<30){
+                    newCounters.push(i+10)
                     
                 }
             }
@@ -55,6 +72,11 @@ export function useDisplayVerbes(){
             
             
         },[formattedVerbes, currentButton])
+
+        useEffect(()=>{
+            setActualCounter(10)
+
+        }, [currentButton])
         
         const updateCounter=function(value){
             setActualCounter(value)
@@ -65,29 +87,7 @@ export function useDisplayVerbes(){
         }
     
     
-        const showWord=function(w){
-            console.log("showword clicked with verbe: "+w.original+" "+w.hidden)
-           
-            let newVerbes=formattedVerbes.map((verbe)=>{
-                if(verbe.original==w.original){
-                    console.log("matching found")
-                    console.log(verbe.hidden)
-                    verbe.hidden=!verbe.hidden;
-                    console.log(verbe.hidden)
-                }
-    
-                return verbe
-            })
+       
 
-            console.log(newVerbes)
-    
-            setFormattedVerbes(newVerbes)
-        }
-    
-        const handleStartPlaying=function(){
-            setPlayingGame(!playingGame)
-        }
-
-
-        return {"verbes":verbes, "buttons":buttons,"currentButton":currentButton,"counters":counters, "actualCounter":actualCounter, "playingGame":playingGame, "updateCounter":updateCounter, "setToCurrent":setToCurrent, "showWord":showWord, "handleStartPlaying":handleStartPlaying, "formattedVerbes":formattedVerbes}
+        return {"verbes":verbes, "buttons":buttons,"currentButton":currentButton,"counters":counters, "actualCounter":actualCounter, "updateCounter":updateCounter, "setToCurrent":setToCurrent, "formattedVerbes":formattedVerbes}
 }

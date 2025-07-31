@@ -1,10 +1,13 @@
-main{
+.Component{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rosybrown;
+    background-color: rgb(245, 217, 196);
     box-sizing: border-box;
     padding:0px;
     padding-bottom:20%;
+    text-align: center;
 }
+
+
 
 
 ul{
@@ -12,18 +15,133 @@ ul{
     flex-wrap: wrap;
 }
 
+.wordsToShow{
+    width:100px;
+    height: 30px;
+    margin-top:2%;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius:10px;
+    border:solid 3px brown;
+    
+}
+.wordsToShow:hover{
+   background-color: bisque;
+   color:black;
+   transition:background-color 0.2s ease, color 0.2s ease;
+   cursor:pointer
+    
+}
+
+.wordsToShowLabel{
+    font-size: 20px;
+    color:brown
+}
+
+.buttonsContainer{
+    margin-top:20px;
+}
+
+.buttonsContainer button{
+    background-color: bisque;
+    border:1px solid burlywood;
+    margin-bottom:20px;
+}
+.buttonsContainer button:hover{
+    background-color: rgb(129, 74, 5);
+    border:1px solid burlywood;
+}
+
+.startPlaying{
+    background-color: rgb(138, 8, 8);
+    color:white;
+    border-radius:10px;
+    border:solid 2px bisque;
+    width:150px;
+    height: 40px;
+    font-size:20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    position:relative;
+    left:28%;
+}
+
+.startPlaying:hover{
+    background-color:white;
+    color:red;
+    transition:0.15s ease background-color, color 0.15s ease;
+}
+
 
 .wordContainer{
 
     min-width:280px;
+    text-align: left;
     
-    background-color:antiquewhite;
-    text-align:left;
+    background-color:rgb(232, 214, 191);
     border:1px solid black;
 }
 
+
+
+.gameBoard .wordContainer{
+    max-width:50%;
+    margin:0 auto;
+    text-align: left;
+    
+    background-color:rgb(232, 214, 191);
+    border:1px solid black;
+}
+
+.gameBoard p{
+font-size:25px;
+}
+
+.gameBoard{
+    text-align: center;
+    padding-top:10px;
+}
+
+.gameBoard button{
+    margin-top:20px;
+    width:300px;
+    background-color: rgb(234, 147, 41);
+    height:50px;
+    border-radius:10px;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:rgb(97, 6, 6)
+}
+.gameBoard button:hover{
+    
+    background-color: rgb(94, 54, 4);
+    
+    color:white;
+    transition:background-color 0.2s ease, color 0.2s ease;
+}
+
+.wordContainer button{
+    max-width: 30px;
+    max-height: 30px;
+
+    position:relative;
+    top:0px;
+    right:30px;
+    
+}
+
+.wordContainer p{
+    min-width: 90%;
+}
+
+
+
+
+
 li{
     list-style: none;
+    display: flex;
+    gap:10%;
+
    
 }
 
@@ -34,19 +152,44 @@ li{
     border-radius:0px 10px 10px 0px;
 }
 
-.originalWord{
-    display:inline-block;
-    width:30%;
-    cursor:pointer;
-    padding:5%;
+.gameBoard .originalWord{
+   border: 3px solid rgb(83, 49, 4);
+   border-radius:0px 10px 10px 0px;
 }
 
-.current{
-    background-color: red;
+.gameBoard .overlined{
+    background-color: rgb(196, 68, 13);
+    color: rgb(196, 68, 13);
+    border:3px solid rgb(83, 49, 4);
+}
+.gameBoard .overlined:hover{
+    background-color: rgb(191, 7, 16);
+    color: rgb(191, 7, 16);
+    transition:background-color 0.2s ease, color 0.2s ease;
+    
+}
+
+
+
+
+
+.originalWord{
+    display:inline-block;
+    width:50%;
+    cursor:pointer;
+    padding:5%;
+     border: 3px solid rgb(83, 49, 4);
+   border-radius:0px 10px 10px 0px;
+}
+
+.buttonsContainer .current{
+    background-color: rgb(43, 32, 2);
+    color:white;
+    font-weight:bold;
 }
 
 button{
-    cursor:p
+    cursor:pointer
 }
 
 .gameRulesContainer{
@@ -83,4 +226,11 @@ button{
  
    
 }
+
+img{
+    max-width: 15px;
+    
+}
+
+
 
