@@ -306,4 +306,45 @@ img{
         left:20%;
     }
 
+    .gameRulesContainer{
+        position:absolute;
+
+        width:80%;
+       
+
+        left:5%;
+      
+
+    }
+    .gameRulesContainer form{
+        margin:0 auto;
+        width:60%;
+      
+
+    }
+
+    .gameRulesContainer  form table{
+      
+       border-spacing: 15px;
+        width: 0%;
+    }
+
+  
+
+    .gameRulesContainer tr{
+        width:100%;
+    }
+
+    .gameRulesContainer table td:first-child{
+        width:30%;
+    }
+
+    .gameRulesContainer input{
+        width: 100%;
+    }
+
+    .gameRulesContainer select{
+        width:50%;
+    }
+
 }

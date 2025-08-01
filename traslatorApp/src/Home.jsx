@@ -64,12 +64,13 @@ export function Navigator({wordFromUrl}){
     console.log(e.target.className)
     handleOverMenu(!overMenu)
    }}>
-   <img  className="menu-alt-logo" src={menu} alt="" onClick={(e)=>{
+   {!wordFromUrl  && <img  className="menu-alt-logo" src={menu} alt="" onClick={(e)=>{
     console.log(e.target.className)
     
     handleOverMenu(!overMenu)
     
-   }}/>
+   }}/>}
+   {wordFromUrl && <h2 className="menu-alt-logo" style={{color:"white", fontSize:"30px"}}>{wordFromUrl} <img src={flecha} style={{minWidth:"10px"}} alt="" /></h2>}
    <div className={overMenu?"altNav":"hidden"}>
     <nav>
       <Link to="/" style={wordFromUrl?{}:{backgroundColor:"rgb(245, 217, 196)"}}>Rechercher</Link>
