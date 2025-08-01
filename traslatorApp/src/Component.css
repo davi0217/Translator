@@ -302,9 +302,10 @@ img{
 
 @media(max-width:720px){
 
-    .gameBoard{
-        left:20%;
-    }
+.gameBoard{
+    position:absolute;
+    left:15%;
+}
 
     .gameRulesContainer{
         position:absolute;
