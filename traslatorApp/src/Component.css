@@ -302,6 +302,10 @@ img{
 
 @media(max-width:720px){
 
+    main{
+        width: 100%;
+    }
+
 .gameBoard{
     position:absolute;
     left:15%;
@@ -326,8 +330,12 @@ img{
 
     .gameRulesContainer  form table{
       
+      
        border-spacing: 15px;
-        width: 0%;
+        width: 70%;
+
+        min-width:200px;
+        
     }
 
   
