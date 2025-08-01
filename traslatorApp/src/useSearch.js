@@ -13,6 +13,15 @@ export function useSearch(){
  const handlerSearch=function(e){
 
   handleMessage({"type":"", "text":""})
+
+  if(e.length>60){
+    handleMessage({"type":"repeated", "text":"Your word is too long. Try again"})
+    return 
+  }
+  if(e==" " || e.trim()==""){
+    handleMessage({"type":"repeated", "text":"You have to write a word"})
+    return 
+  }
      
      setWordToSearch(e)
   }

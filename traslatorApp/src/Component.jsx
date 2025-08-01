@@ -78,7 +78,7 @@ export  default function Component(){
     <li key={word}>
     <p> <span className={word.hidden?"originalWord overlined":"originalWord"} onClick={()=>{
        showWord(word)
-    }}>{word.original}</span>: <span> {word.translation}</span> </p>
+    }}>{word.original}</span> <h3 className="translationWord"> {word.translation}</h3> </p>
    <button onClick={()=>{
     removeData(word)
    }}><img src={trash}></img></button>
@@ -101,7 +101,7 @@ export  default function Component(){
 
 function GameRules({}){
 
-    const [rules, setRules]=useState({"number": 5,"time":5, "automatique":false})
+    const [rules, setRules]=useState({"number": 1,"time":5, "automatique":false})
     const [started, setStarted]=useState(false)
 
 
@@ -131,7 +131,7 @@ function GameRules({}){
             <tbody>
             <tr>
                 <td>Nombre de paroles</td>
-                <td><input type="number" name="number" max={formattedVerbes.length} min={0} defaultValue={5} step={5}/></td>
+                <td><input type="number" name="number" max={formattedVerbes.length} min={formattedVerbes.length>5?5:1} defaultValue={formattedVerbes.length>5?5:1} step={formattedVerbes.length>5?5:0}/></td>
             </tr>
             <tr>
                 <td>Temps</td>
@@ -175,10 +175,6 @@ function Game({rules}){
     let wordsLeft=useRef(1)
     let secondsPassed=useRef(0)
     
-    console.log("arriving in game, formattedverbes are "+formattedVerbes[numberPlaying].hidden)
-    
-    console.log("seconds passed:"+secondsPassed.current)
-    
     
     const handleNext=function(){
 
@@ -189,7 +185,7 @@ function Game({rules}){
            
             
 
-            if(numbersPlayed.includes(newNumber)){
+            if(numbersPlayed.includes(newNumber) && numbersPlayed.length!=rules.number){
                 continue
             }else{
             setNumberPlaying(newNumber)
@@ -200,6 +196,7 @@ function Game({rules}){
             newPlayed.push(newNumber)
             setNumbersPlayed(newPlayed)
             if(newPlayed.length>=(Number.parseInt(rules.number)+1)){
+                console.log("game is finishing")
                 handleStartPlaying()
                 break
             }
@@ -214,7 +211,7 @@ function Game({rules}){
 
             setClock(clock-1)
             if(clock==0){
-                setPlaying(false)
+                handleStartPlaying()
             }
 
         },1000)
@@ -244,7 +241,7 @@ function Game({rules}){
     <li key={formattedVerbes[numberPlaying]}>
     <p> <span className={formattedVerbes[numberPlaying].hidden?"originalWord overlined":"originalWord"} onClick={()=>{
        showWord(formattedVerbes[numberPlaying])
-    }}>{formattedVerbes[numberPlaying].original}</span>: <span> {formattedVerbes[numberPlaying].translation}</span> </p>
+    }}>{formattedVerbes[numberPlaying].original}</span> <div className="trans-word-container"><h3 className='translationWord'> {formattedVerbes[numberPlaying].translation}</h3></div> </p>
     </li>
   </div>
         <button  style={rules.number==wordsLeft.current?{backgroundColor:"red"}:{}}onClick={()=>{

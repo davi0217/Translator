@@ -89,6 +89,15 @@ setFormattedVerbes(formattedVerbes.map((v)=>{
     const handleAddWords=function(newData){
 
    
+    if(newData.original==" " || newData.original.trim()=="" || newData.translation.trim()==""){
+    handleMessage({"type":"repeated", "text":"You have to write a word"})
+    return 
+  }
+
+  if(newData.original.length>60 || newData.translation.length>60){
+    handleMessage({"type":"repeated", "text":"Your word is too long. Try again"})
+    return 
+  }
         
     
  if(data.some((d)=>{
@@ -98,7 +107,7 @@ setFormattedVerbes(formattedVerbes.map((v)=>{
       return
     }
 
-    handleMessage({"type":"added", "text":"La parole s'a ajouté"})
+    handleMessage({"type":"added", "text":`La parole: ${newData.original} s'a ajouté`})
 
     let newDataFormatted={"original":setFirstLetterToCapital(newData.original), "translation":setFirstLetterToCapital(newData.translation), "category":newData.category}
  

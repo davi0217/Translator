@@ -10,6 +10,9 @@ import menu from './assets/menu.svg'
 
 import flecha from './assets/flecha-abajo.svg'
 
+import spanish from './assets/spanish-flag.png'
+import french from './assets/french.png'
+
 function Home() {
 
   const {handleOverMenu}=useContext(WordsContext)
@@ -30,7 +33,7 @@ return <main onClick={(e)=>{
 
   <h2>Fais une recherche et mette une nouvelle parole dans la base de données</h2>
 
-<Input handleSearch={handlerSearch} handlerLanguage={handlerLanguage}/>
+<Input handleSearch={handlerSearch} handlerLanguage={handlerLanguage} language={language}/>
 <Display word={wordToSearch} language={language}/>
 </main>
   
@@ -47,13 +50,13 @@ export function Navigator({wordFromUrl}){
 
   <div className="navContainer">
     <nav>
-      <Link to="/" style={wordFromUrl?{}:{backgroundColor:"rgb(245, 217, 196)"}}>Rechercher</Link>
+      <Link to="/" style={wordFromUrl?{}:{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}}>Rechercher</Link>
      
-      <Link to="/component/Verbe" style={wordFromUrl=="Verbe"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>Verbes</Link>
-      <Link to="/component/Adjectif" style={wordFromUrl=="Adjectif"?{backgroundColor:"rgb(245, 217, 196)"}:{}} >Adjectifs</Link>
-      <Link to="/component/Adverbe" style={wordFromUrl=="Adverbe"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>Adverbes</Link>
-      <Link to="/component/Vocabulaire" style={wordFromUrl=="Vocabulaire"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>Vocabulaire</Link>
-      <Link to="/component/Façons" style={wordFromUrl=="Façons"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>Façons de dire</Link>
+      <Link to="/component/Verbe" style={wordFromUrl=="Verbe"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>Verbes</Link>
+      <Link to="/component/Adjectif" style={wordFromUrl=="Adjectif"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}} >Adjectifs</Link>
+      <Link to="/component/Adverbe" style={wordFromUrl=="Adverbe"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>Adverbes</Link>
+      <Link to="/component/Vocabulaire" style={wordFromUrl=="Vocabulaire"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>Vocabulaire</Link>
+      <Link to="/component/Façons" style={wordFromUrl=="Façons"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>Façons de dire</Link>
     </nav>
   </div>
 
@@ -85,14 +88,14 @@ export function Navigator({wordFromUrl}){
   </>
 }
 
-function Input({handleSearch,  handlerLanguage}){
+function Input({handleSearch,  handlerLanguage, language}){
 
   const [value, setValue]=useState("")
 
   const {handleAddWords, handlerFilter}=useContext(WordsContext)
   const [actualFilter, setActualFilter]=useState("Verbe")
 
-  const [seeOptions, setSeeOptions]=useState(false)
+  const [seeOptions, setSeeOptions]=useState(true)
 
   const handleSeeOptions=function(e){
 
@@ -135,7 +138,7 @@ function Input({handleSearch,  handlerLanguage}){
     </select>
     </div>
     <div className='inputContainer'>
-    <label htmlFor="language">Language</label>
+    <label htmlFor="language"> <img  className="flag-logo" src={language=="français"?french:spanish}></img>Language</label>
     <select name="language" id="language" onChange={()=>{
       
       handlerLanguage()
