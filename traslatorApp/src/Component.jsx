@@ -71,7 +71,8 @@ export  default function Component(){
     }}> Jouer</button>
     
     <ul>
-        {verbes && verbes.map((word)=>{
+        {verbes && <div className="wordContainer-container">
+             {verbes.map((word)=>{
 
 
   return <div className='wordContainer'>  
@@ -85,7 +86,10 @@ export  default function Component(){
     </li>
   </div>
 
+
 })}
+
+</div>}
         
     </ul>
     

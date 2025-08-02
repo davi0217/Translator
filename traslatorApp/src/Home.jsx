@@ -29,7 +29,7 @@ return <main onClick={(e)=>{
    }}>
   <Navigator/>
 
-  <h1>Soyez le bienvenue à mon App de traduction!</h1>
+  <h1 className="title">Ton app de traduction</h1>
 
   <h2>Fais une recherche et mette une nouvelle parole dans la base de données</h2>
 

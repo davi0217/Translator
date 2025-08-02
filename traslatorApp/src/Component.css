@@ -10,6 +10,7 @@
 
 
 
+
 ul{
     display:flex;
     flex-wrap: wrap;
@@ -69,6 +70,15 @@ ul{
     background-color:white;
     color:red;
     transition:0.15s ease background-color, color 0.15s ease;
+}
+
+.wordContainer-container{
+    margin:0 auto;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width:100%;
+    margin-left:-20px;
 }
 
 
@@ -309,11 +319,9 @@ img{
 
   
     .gameBoard{
- 
-    width:50%;
-    min-width:200px;
-    position:absolute;
-    left:25%;
+        width:100%;
+        left:0px;
+        position:absolute;
     }
 
     .gameBoard p{
@@ -331,7 +339,7 @@ img{
     }
 
     .gameBoard button{
-       width:100%;
+       width:80%;
     }
 
 
@@ -377,4 +385,10 @@ img{
         width:50%;
     }
 
+    .startPlaying{
+        position:relative;
+    left:20%;
+    }
+
 }
+
