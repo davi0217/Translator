@@ -304,21 +304,42 @@ img{
 
     main{
         width: 100%;
+        
     }
 
-.gameBoard{
+  
+    .gameBoard{
+ 
+    width:50%;
+    min-width:200px;
     position:absolute;
-    left:15%;
-}
+    left:25%;
+    }
+
+    .gameBoard p{
+        font-size:18px;
+    }
+
+    .gameBoard .wordContainer{
+      
+        min-width:100%;
+    }
+
+    .gameBoard .trans-word-container{
+        min-width:100%;
+        margin-bottom:7px;
+    }
+
+    .gameBoard button{
+       width:100%;
+    }
+
 
     .gameRulesContainer{
         position:absolute;
-
-        width:80%;
-       
+        width:80%;    
 
         left:5%;
-      
 
     }
     .gameRulesContainer form{

@@ -400,7 +400,20 @@ input[type="submit"]{
 }
 
 @media(max-width:730px){
+.loading-message{
+    font-size: 18px;
+}
+
     .self-introduction-form{
         margin-top:150px;
+    }
+
+    .translation h1{
+            font-size:16px;
+    }
+
+    .translation input{
+        width:70%;
+        font-size:13px;
     }
 }
