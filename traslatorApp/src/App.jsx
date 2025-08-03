@@ -90,12 +90,12 @@ setFormattedVerbes(formattedVerbes.map((v)=>{
 
    
     if(newData.original==" " || newData.original.trim()=="" || newData.translation.trim()==""){
-    handleMessage({"type":"repeated", "text":"You have to write a word"})
+    handleMessage({"type":"repeated", "text":"Vous devez écrire un mot"})
     return 
   }
 
   if(newData.original.length>60 || newData.translation.length>60){
-    handleMessage({"type":"repeated", "text":"Your word is too long. Try again"})
+    handleMessage({"type":"repeated", "text":"Votre mot est trop long"})
     return 
   }
         
@@ -103,11 +103,11 @@ setFormattedVerbes(formattedVerbes.map((v)=>{
  if(data.some((d)=>{
       return setFirstLetterToCapital(d.translation)===setFirstLetterToCapital(newData.translation)
     })){
-        handleMessage({"type":"repeated", "text":"La parole est dejà registrée"})
+        handleMessage({"type":"repeated", "text":"Le mot est déjà enregistré"})
       return
     }
 
-    handleMessage({"type":"added", "text":`La parole: ${newData.original} s'a ajouté`})
+    handleMessage({"type":"added", "text":`Le mot: ${newData.original} a été ajouté`})
 
     let newDataFormatted={"original":setFirstLetterToCapital(newData.original), "translation":setFirstLetterToCapital(newData.translation), "category":newData.category}
  

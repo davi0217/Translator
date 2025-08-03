@@ -405,12 +405,26 @@ input[type="submit"]{
         font-family:'Pixelify Sans';
         font-size:30px;
         background-color: rgb(120, 11, 11);
-
+        
         padding-bottom:30px;
         color:white;
         width:100%;
         border-radius:0px 0px 10px 10px;
+     
     }
+
+    .subtitle{
+        
+        width:100%;
+        padding-top:10px;
+       
+        
+    }
+
+    .inputContainer{
+        margin-bottom:10px;
+    }
+
 .loading-message{
     font-size: 18px;
 }
@@ -424,8 +438,9 @@ input[type="submit"]{
     }
 
     .translation input{
+        padding-left:2px;
         width:70%;
-        font-size:13px;
+        font-size:12px;
     }
 }
 

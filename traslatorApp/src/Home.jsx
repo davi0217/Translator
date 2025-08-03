@@ -31,7 +31,7 @@ return <main onClick={(e)=>{
 
   <h1 className="title">Ton app de traduction</h1>
 
-  <h2>Fais une recherche et mette une nouvelle parole dans la base de données</h2>
+  <h2 className="subtitle">Traduisez automatiquement les mots que vous souhaitez et enregistrez-les dans votre propre espace personnel</h2>
 
 <Input handleSearch={handlerSearch} handlerLanguage={handlerLanguage} language={language}/>
 <Display word={wordToSearch} language={language}/>
@@ -127,7 +127,7 @@ function Input({handleSearch,  handlerLanguage, language}){
     }} >
 
       <div className='inputContainer'>
-    <label htmlFor="filter">Selecciona la categoría </label>
+    <label htmlFor="filter">Choisissez la catégorie </label>
     <select name="filter" id="filter" onChange={(e)=>{
       handleChangeFilter(e.target.value)
     }}>
@@ -149,7 +149,7 @@ function Input({handleSearch,  handlerLanguage, language}){
     </select>
     </div>
     <div className='inputContainer'>
-    <label  htmlFor="search">Search</label>
+    <label  htmlFor="search">Chercher</label>
     <input type="text" name="search"  onChange={(e)=>{
       handleChange(e.target.value)
     }}/>
@@ -170,7 +170,7 @@ function Input({handleSearch,  handlerLanguage, language}){
     e.target.translation.value=""
 
   }}  >
-    <label htmlFor="original">Ou introduis-le toi-même{seeOptions?<span><img className='arrow-logo' src={flecha} alt="" /></span>:" "}</label>
+    <label htmlFor="original">Ou entrez-les vous-même{seeOptions?<span><img className='arrow-logo' src={flecha} alt="" /></span>:" "}</label>
     <div className ={seeOptions?"hidden":""}>
     <input type="text" name="original" placeholder='Français...' />
     <input type="text" name="translation" placeholder='Spagnol...' />
@@ -217,12 +217,12 @@ function Display({word, language}){
 
   return <>
 
-    {loading?<h1 className="loading-message" style={{color:"red"}}>Loading request...</h1>:<h1></h1>}  
+    {loading?<h1 className="loading-message" style={{color:"red"}}>Chargement en cours..</h1>:<h1></h1>}  
     {message.type=="added" && <h1 className="loading-message" style={{color:"green"}}>{message.text}</h1>}
     {message.type=="repeated" && <h1 className="loading-message" style={{color:"red"}}>{message.text}</h1>}
 
     {translation && <div className='translation'> 
-    {word!=="" && !loading?<h1>{translation.original} se traduce como {translation.translation} en {language=="français"?"francés":"español"}</h1>:<h1></h1>}
+    {word!=="" && !loading?<h1>{translation.original} se traduit par {translation.translation} en {language=="français"?"français":"spagnol"}</h1>:<h1></h1>}
     {translation && <div>
       <input type="submit" value="Ajouter aux donnés" onClick={(e)=>{
         handleAddWords(translation)

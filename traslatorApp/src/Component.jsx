@@ -123,7 +123,7 @@ function GameRules({}){
     
     {!started && <main>
         <div className='gameRulesContainer'>
-        <h1>Redige les règlements pour ton jeu</h1>
+        <h1>Choisissez les règles pour votre jeu</h1>
 
         <form action="post" onSubmit={(e)=>{
             e.preventDefault()
@@ -134,7 +134,7 @@ function GameRules({}){
         <table>
             <tbody>
             <tr>
-                <td>Nombre de paroles</td>
+                <td>Nombre de mots</td>
                 <td><input type="number" name="number" max={formattedVerbes.length} min={formattedVerbes.length>5?5:1} defaultValue={formattedVerbes.length>5?5:1} step={formattedVerbes.length>5?5:0}/></td>
             </tr>
             <tr>
