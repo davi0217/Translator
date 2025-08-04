@@ -3,10 +3,14 @@
     background-color: rgb(245, 217, 196);
     box-sizing: border-box;
     padding:0px;
-    padding-bottom:20%;
+
     text-align: center;
+    padding-bottom:40px;
 }
 
+.gameRulesAside{
+    background-color: rosybrown;
+}
 
 
 
@@ -110,11 +114,10 @@ font-size:25px;
 }
 
 .gameBoard{
+    background-color: rgb(245, 217, 196);
     text-align: center;
     padding-top:10px;
-     position:absolute;
-    top:20%;
-    left:35%;
+    width:100%;
 }
 
 .gameBoard button{
@@ -268,13 +271,10 @@ button{
 }
 
 .gameRulesContainer{
-    
-    width:80%;
+    background-color: rgb(245, 217, 196);
+    width:100%;
    margin:0 auto;
-    padding:20px;
-    position:absolute;
-    top:20%;
-    left:10%
+    padding-bottom:20px;
    
 }
 
@@ -306,9 +306,19 @@ button{
 
 img{
     max-width: 15px;
-    
+ 
 }
 
+.remove-button{
+    border-radius:5px 0px 5px 5px;
+    padding: 0px;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-top:1%;
+    min-width:30px;
+}
 
 @media(max-width:720px){
 
@@ -320,8 +330,8 @@ img{
   
     .gameBoard{
         width:100%;
-        left:0px;
-        position:absolute;
+        
+        
     }
 
     .gameBoard p{
@@ -329,13 +339,21 @@ img{
     }
 
     .gameBoard .wordContainer{
-      
+        padding:0px;
         min-width:100%;
     }
 
     .gameBoard .trans-word-container{
-        min-width:100%;
+        max-width:100%;
         margin-bottom:7px;
+    }
+
+    .gameBoard .translationWord{
+        
+    line-break: anywhere;
+       min-width:100%;
+      
+       overflow: hidden;
     }
 
     .gameBoard button{
@@ -343,13 +361,7 @@ img{
     }
 
 
-    .gameRulesContainer{
-        position:absolute;
-        width:80%;    
-
-        left:5%;
-
-    }
+   
     .gameRulesContainer form{
         margin:0 auto;
         width:60%;

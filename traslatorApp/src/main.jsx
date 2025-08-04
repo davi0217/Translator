@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router'
 import {Routes, Route} from 'react-router'
 import { createRoot } from 'react-dom/client'
 import {useSearchParams} from 'react-router-dom'
-import './index.css'
+
 import Home from './Home.jsx'
 import Component from './Component.jsx'
 import App from './App.jsx'

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState} from 'react'
 import {useSearch} from './useSearch.js'
 import { WordsContext } from './App.jsx'
+import {useIntersection} from './useIntersection.js'
 
 import {Link, useParams} from 'react-router-dom'
 
@@ -12,6 +13,8 @@ import flecha from './assets/flecha-abajo.svg'
 
 import spanish from './assets/spanish-flag.png'
 import french from './assets/french.png'
+import github from './assets/github.svg'
+import linkedin from './assets/linkedin-logo.png'
 
 function Home() {
 
@@ -35,6 +38,7 @@ return <main onClick={(e)=>{
 
 <Input handleSearch={handlerSearch} handlerLanguage={handlerLanguage} language={language}/>
 <Display word={wordToSearch} language={language}/>
+<Footer/>
 </main>
   
 
@@ -98,6 +102,8 @@ function Input({handleSearch,  handlerLanguage, language}){
 
   const [seeOptions, setSeeOptions]=useState(true)
 
+  const [ref, isVisible]=useIntersection(0.90)
+
   const handleSeeOptions=function(e){
 
     if(e!=="text"){
@@ -112,7 +118,7 @@ function Input({handleSearch,  handlerLanguage, language}){
   }
   const handleChangeFilter=function(e){
 
-    setActualFilter(e)
+    handlerFilter(e)
   }
 
   
@@ -126,7 +132,7 @@ function Input({handleSearch,  handlerLanguage, language}){
       e.target.search.value=""
     }} >
 
-      <div className='inputContainer'>
+      <div className='inputContainer visible'>
     <label htmlFor="filter">Choisissez la catégorie </label>
     <select name="filter" id="filter" onChange={(e)=>{
       handleChangeFilter(e.target.value)
@@ -138,7 +144,7 @@ function Input({handleSearch,  handlerLanguage, language}){
       <option value="Façons">Façon de dire</option>
     </select>
     </div>
-    <div className='inputContainer'>
+    <div  className='inputContainer '>
     <label htmlFor="language"> <img  className="flag-logo" src={language=="français"?french:spanish}></img>Language</label>
     <select name="language" id="language" onChange={()=>{
       
@@ -154,7 +160,7 @@ function Input({handleSearch,  handlerLanguage, language}){
       handleChange(e.target.value)
     }}/>
     </div>
-  <div className='inputContainer'>
+  <div  className='inputContainer'>
     <input type="submit" value="Envoyer" />
     </div>
   </form>
@@ -162,7 +168,7 @@ function Input({handleSearch,  handlerLanguage, language}){
   <form action=""  onClick={(e)=>{
     console.log(e.target.type)
       handleSeeOptions(e.target.type)
-    }} className={seeOptions?"self-introduction-form self-introduction-form-reduced":"self-introduction-form"} onSubmit={(e)=>{
+    }} ref={ref} className={(seeOptions?"self-introduction-form self-introduction-form-reduced":"self-introduction-form")+(isVisible?' visible':'')} onSubmit={(e)=>{
     e.preventDefault()
     let newWord={"original":e.target.original.value, "translation":e.target.translation.value, "category":actualFilter}
     handleAddWords(newWord)
@@ -231,6 +237,37 @@ function Display({word, language}){
       </div>}
       </div>  }
   </>
+}
+
+export function Footer(){
+
+  return <footer>
+
+    <div className='contact-info'>
+      <h1>Contacte</h1>
+
+      <h2>David Sánchez</h2>
+      <h3>Communication et devéloppement</h3>
+      <h4>Madrid, Spagne</h4>
+    </div>
+
+    <div className="links">
+
+      <h5>Links d'intérêt</h5>
+
+      <div className="link-container">
+        <img src={linkedin} alt="" />
+        <a href="">Link to LinkedIn </a>
+      </div>
+      <div className="link-container">
+        <img src={github} alt="" />
+        <a href="">Link to GitHub</a>
+      </div>
+
+
+    </div>
+
+  </footer>
 }
 
 

@@ -4,6 +4,7 @@ import { useDisplayVerbes } from './useDisplayVerbes.js'
 import {useParams} from 'react-router-dom'
 
 import {Navigator} from './Home.jsx'
+import {Footer} from './Home.jsx'
 import './Component.css'
 import { WordsContext } from './App.jsx'
 
@@ -80,7 +81,7 @@ export  default function Component(){
     <p> <span className={word.hidden?"originalWord overlined":"originalWord"} onClick={()=>{
        showWord(word)
     }}>{word.original}</span> <h3 className="translationWord"> {word.translation}</h3> </p>
-   <button onClick={()=>{
+   <button className= "remove-button" onClick={()=>{
     removeData(word)
    }}><img src={trash}></img></button>
     </li>
@@ -94,12 +95,16 @@ export  default function Component(){
     </ul>
     
     </div>}
-    </main>
-    {playingGame && <main>
+   
+    {playingGame && <aside className="gameRulesAside">
         
         <GameRules/>
+        
     
-        </main>}
+        </aside>}
+    
+    <Footer/>
+    </main>
 </>
 }
 
@@ -108,6 +113,9 @@ function GameRules({}){
     const [rules, setRules]=useState({"number": 1,"time":5, "automatique":false})
     const [started, setStarted]=useState(false)
 
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[started])
 
     const {formattedVerbes}=useContext(WordsContext)
     const handleRules=function(obj){
@@ -121,7 +129,7 @@ function GameRules({}){
 
     return <>
     
-    {!started && <main>
+    {!started && <div>
         <div className='gameRulesContainer'>
         <h1>Choisissez les règles pour votre jeu</h1>
 
@@ -135,7 +143,7 @@ function GameRules({}){
             <tbody>
             <tr>
                 <td>Nombre de mots</td>
-                <td><input type="number" name="number" max={formattedVerbes.length} min={formattedVerbes.length>5?5:1} defaultValue={formattedVerbes.length>5?5:1} step={formattedVerbes.length>5?5:0}/></td>
+                <td><input type="number" name="number" max={formattedVerbes.length} min={formattedVerbes.length>5?5:1} defaultValue={formattedVerbes.length>5?5:1}/></td>
             </tr>
             <tr>
                 <td>Temps</td>
@@ -159,7 +167,7 @@ function GameRules({}){
     </form>
 
     </div>
-    </main>
+    </div>
     }
 
     {started && <Game rules={rules}/>}
@@ -235,18 +243,18 @@ function Game({rules}){
     
     return <>
 
-    {(playing)&&<main className="gameBoard">
+    {(playing)&&<div className="gameBoard">
 
         <p>{rules.automatique?"Playing automatique":""}</p>
     <p><span>{Math.trunc(clock/60)}</span>: <span>{clock%60}</span> left</p>
 
     <div>
         <div className='wordContainer'>  
-    <li key={formattedVerbes[numberPlaying]}>
+    
     <p> <span className={formattedVerbes[numberPlaying].hidden?"originalWord overlined":"originalWord"} onClick={()=>{
        showWord(formattedVerbes[numberPlaying])
     }}>{formattedVerbes[numberPlaying].original}</span> <div className="trans-word-container"><h3 className='translationWord'> {formattedVerbes[numberPlaying].translation}</h3></div> </p>
-    </li>
+    
   </div>
         <button  style={rules.number==wordsLeft.current?{backgroundColor:"red"}:{}}onClick={()=>{
             handleNext()
@@ -255,7 +263,7 @@ function Game({rules}){
     </div>
 
     <p>Words displayed: <span>{wordsLeft.current}</span> / {rules.number}</p>
-    </main>
+    </div>
     }
     
     </>

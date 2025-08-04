@@ -14,7 +14,7 @@ export function useSearch(){
 
   handleMessage({"type":"", "text":""})
 
-  if(e.length>60){
+  if(e.length>30){
     handleMessage({"type":"repeated", "text":"Your word is too long. Try again"})
     return 
   }

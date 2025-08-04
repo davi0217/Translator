@@ -3,9 +3,11 @@ main{
     font-family: Saira;
     background-color: rgb(245, 217, 196);
     box-sizing: border-box;
-    padding-bottom:1000px;
+height: auto;
 
 }
+
+
 
 nav{
     width:100%;
@@ -68,6 +70,23 @@ h2{
    
 }
 
+.title{
+    font-family: 'Pixelify Sans';
+    font-size:40px;
+    background-color: brown;
+    margin:0;
+    color:white;
+    padding-bottom:20px;
+    padding-top:5px;
+
+    border-radius:0px 0px 50px 0px;
+
+}
+
+.subtitle{
+    padding-left:5px;
+}
+
 .searchForm{
   
     padding-left:5%;
@@ -89,6 +108,18 @@ label{
 
 select{
     
+    height: 30px;
+    font-size:15px;
+    font-family: Saira;
+    background-color: beige;
+    color:brown;
+    border-radius:10px;
+    border:2px solid brown;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.searchForm input[type="text"]{
     height: 30px;
     font-size:15px;
     font-family: Saira;
@@ -124,8 +155,7 @@ input[type="submit"]{
     border:2px solid brown;
     cursor:pointer;
     align-self: center;
-    
-    
+      
 
 }
 
@@ -168,7 +198,7 @@ input[type="submit"]{
 .self-introduction-form input[type="submit"]{
     
     background-color: rgb(124, 76, 3);
-    color:rgb(64, 4, 4);
+    color:rgb(241, 205, 205);
     font-weight: bold;
     font-size:20px;
     position:relative;
@@ -227,6 +257,85 @@ input[type="submit"]{
 
 }
 
+footer{
+    margin-top:15px;
+    padding-top:0px;
+    width:100%;
+    background-color: brown;
+    color:white;
+    display:flex;
+    justify-content: space-between;
+    align-items: top;
+   
+
+}
+
+.contact-info{
+   
+    padding-left:5%;
+}
+
+.contact-info h1{
+    color:white;
+    font-weight: bolder;
+    font-size:40px;
+    margin:0;
+    padding:0;
+    text-align: left;
+   
+}
+
+.contact-info h2{
+    color:rgb(244, 226, 203);
+    padding:0px;
+    text-align: left;
+    margin:0;
+   
+
+}
+
+.contact-info h3{
+    font-size:16px;
+    font-style:italic;
+    margin-top:-5px;
+}
+
+.contact-info h4{
+    margin-top:-10px;
+}
+
+footer .links{
+    padding-top:10px;
+
+   
+    min-width:100px;
+    width:40%;
+    padding-left:10px;
+
+}
+
+.links h5{
+    font-size:20px;
+    margin:0;
+}
+
+.links a{
+    text-decoration: none;
+    color:bisque;
+
+    font-size:17px;
+    font-family:'Pixelify Sans'
+    
+}
+
+.link-container{
+display:flex;
+gap:5px;
+text-align: left;
+justify-content: left;
+align-items: center;
+}
+
 @media(max-width:830px){
 
     .navContainer{
@@ -256,6 +365,23 @@ input[type="submit"]{
         margin:0 auto;
         
     }
+
+    footer{
+        flex-direction: column;
+        justify-content:left;
+        padding-bottom:10px;
+         
+    }
+
+    .contact-info{
+        padding-left:30px;
+
+    }
+    footer .links{
+       
+        padding-left:30px;
+        
+    }
     .altNav{
        
         padding:0px;
@@ -266,7 +392,7 @@ input[type="submit"]{
     .altNav nav{
        
         position:absolute;
-        top:110px;
+        top:100px;
         display:flex;
         flex-direction: column;
         padding:0px;
@@ -284,6 +410,9 @@ input[type="submit"]{
         align-items: center;
 
     }
+
+  
+ 
 
     .hidden{
         display:none
@@ -322,6 +451,7 @@ input[type="submit"]{
     }
 
     .self-introduction-form{
+
         cursor:pointer;
     border-radius:10px;
     border:1px solid brown;
@@ -345,6 +475,7 @@ input[type="submit"]{
 }
 
     .self-introduction-form-reduced{
+     
         cursor:pointer;
         margin-top:30%;
         border-radius:10px;
@@ -422,19 +553,67 @@ input[type="submit"]{
     }
 
     .inputContainer{
-        margin-bottom:10px;
+     margin-bottom:10px;
+     
     }
 
-.loading-message{
-    font-size: 18px;
-}
+  
 
+   
+
+    .loading-message{
+        font-size: 18px;
+        line-break: anywhere;
+    }
+    
     .self-introduction-form{
         margin-top:150px;
+        
+        opacity:0;
+        transform: translateY(50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+         cursor:pointer;
+    border-radius:10px;
+    border:1px solid brown;
+    
+    width:60%;
+    height: 250px;
+    padding:10px;
+    display:flex;
+    flex-direction: column; 
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+ 
+    background-color: rgb(223, 174, 146);
     }
+    .self-introduction-form-reduced{
+          
+        opacity:0;
+        transform: translateY(50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        cursor:pointer;
+      border-radius:10px;
+        border-right:2px solid brown;
+        width:60%;      
+        height: 50px;
+        display: flex;
+        background-color: rgb(223, 174, 146); 
+
+        align-items: center;
+    }
+
+    .visible{
+     opacity:1;
+     transform: translateY(0);
+ }
+
+ 
 
     .translation h1{
             font-size:16px;
+            line-break: anywhere;
     }
 
     .translation input{

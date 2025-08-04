@@ -80,13 +80,14 @@ setFormattedVerbes(formattedVerbes.map((v)=>{
             return v
 }))
 
+window.scrollTo(0,0)
     },[playingGame])
 
     const setFirstLetterToCapital=function(word){
         return (word.slice(0,1).toUpperCase()+word.slice(1,word.length).toLowerCase())
     }
     
-    const handleAddWords=function(newData){
+const handleAddWords=function(newData){
 
    
     if(newData.original==" " || newData.original.trim()=="" || newData.translation.trim()==""){
@@ -94,7 +95,7 @@ setFormattedVerbes(formattedVerbes.map((v)=>{
     return 
   }
 
-  if(newData.original.length>60 || newData.translation.length>60){
+  if(newData.original.length>30 || newData.translation.length>30){
     handleMessage({"type":"repeated", "text":"Votre mot est trop long"})
     return 
   }
@@ -109,7 +110,7 @@ setFormattedVerbes(formattedVerbes.map((v)=>{
 
     handleMessage({"type":"added", "text":`Le mot: ${newData.original} a été ajouté`})
 
-    let newDataFormatted={"original":setFirstLetterToCapital(newData.original), "translation":setFirstLetterToCapital(newData.translation), "category":newData.category}
+    let newDataFormatted={"original":setFirstLetterToCapital(newData.original), "translation":setFirstLetterToCapital(newData.translation), "category":ffilter}
  
    setData([...data, newDataFormatted])
 
