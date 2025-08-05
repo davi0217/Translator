@@ -65,11 +65,11 @@ export function Navigator({wordFromUrl}){
   </div>
 
   <div className='navContainer-reduced' onClick={(e)=>{
-    console.log(e.target.className)
+   
     handleOverMenu(!overMenu)
    }}>
    {!wordFromUrl  && <img  className="menu-alt-logo" src={menu} alt="" onClick={(e)=>{
-    console.log(e.target.className)
+    
     
     handleOverMenu(!overMenu)
     
@@ -97,7 +97,7 @@ function Input({handleSearch,  handlerLanguage, language}){
 
   const [value, setValue]=useState("")
 
-  const {handleAddWords, handlerFilter}=useContext(WordsContext)
+  const {handleAddWords, handlerFilter, filter}=useContext(WordsContext)
   const [actualFilter, setActualFilter]=useState("Verbe")
 
   const [seeOptions, setSeeOptions]=useState(true)
@@ -135,7 +135,7 @@ function Input({handleSearch,  handlerLanguage, language}){
       <div className='inputContainer visible'>
     <label htmlFor="filter">Choisissez la catégorie </label>
     <select name="filter" id="filter" onChange={(e)=>{
-      handleChangeFilter(e.target.value)
+      handlerFilter(e.target.value)
     }}>
       <option value="Verbe" default>Verbe</option>
       <option value="Adjectif">Adjectif</option>
@@ -166,11 +166,11 @@ function Input({handleSearch,  handlerLanguage, language}){
   </form>
 
   <form action=""  onClick={(e)=>{
-    console.log(e.target.type)
+    
       handleSeeOptions(e.target.type)
     }} ref={ref} className={(seeOptions?"self-introduction-form self-introduction-form-reduced":"self-introduction-form")+(isVisible?' visible':'')} onSubmit={(e)=>{
     e.preventDefault()
-    let newWord={"original":e.target.original.value, "translation":e.target.translation.value, "category":actualFilter}
+    let newWord={"original":e.target.original.value, "translation":e.target.translation.value, "category":filter}
     handleAddWords(newWord)
     e.target.original.value=""
     e.target.translation.value=""
@@ -205,7 +205,6 @@ function Display({word, language}){
 
     let languageOrigin=language=="français"?"fr":"es"
     let languageTarget=language=="français"?"es":"fr"
-    console.log(`https://lingva.ml/api/v1/${languageOrigin}/${languageTarget}/${word}`)
 
     if(word){
       setLoading(true)
@@ -257,11 +256,11 @@ export function Footer(){
 
       <div className="link-container">
         <img src={linkedin} alt="" />
-        <a href="">Link to LinkedIn </a>
+        <a href="https://www.linkedin.com/in/davidsanrod1420/">Link to LinkedIn </a>
       </div>
       <div className="link-container">
         <img src={github} alt="" />
-        <a href="">Link to GitHub</a>
+        <a href="https://github.com/davi0217">Link to GitHub</a>
       </div>
 
 

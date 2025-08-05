@@ -2,15 +2,17 @@ import { useState, useEffect} from 'react'
 
 
 import {createContext} from 'react'
+import { wordsList } from './muestra.js'
 
 export const WordsContext=createContext()
 
 export default function App({children}){
     
+    
     const words=JSON.parse(localStorage.getItem("words"))
-    const [data, setData]= useState(words?words:[]) 
+    const [data, setData]= useState(words?words:wordsList) 
     const [playingGame, setPlayingGame]=useState(false)
-    const [ffilter, setFilter]=useState("")
+    const [ffilter, setFilter]=useState("Verbe")
     const [wordFromUrl, setWordFromUrl]=useState("")
     const [message, setMessage]=useState({"type":"", "text":""})
     const [overMenu, setOverMenu]=useState(false)
@@ -28,11 +30,11 @@ const handleWordFromUrl=function(e){
     }
 
 const handleOverMenu=function(state){
-    console.log("handleOvermenu called with data: "+overMenu)
+  
     setOverMenu(state)
 }
 
-console.log("handleOverMenu changed with value: "+overMenu)
+
     
     useEffect(()=>{
         setPlayingGame(false)
@@ -88,6 +90,8 @@ window.scrollTo(0,0)
     }
     
 const handleAddWords=function(newData){
+
+    console.log(newData.original +" "+newData.translation+" "+newData.category)
 
    
     if(newData.original==" " || newData.original.trim()=="" || newData.translation.trim()==""){

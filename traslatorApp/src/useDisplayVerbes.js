@@ -35,13 +35,12 @@ export function useDisplayVerbes(){
         }, [formattedVerbes])
 
         useEffect(()=>{
-        console.log(currentButton+"is current button")
-        console.log(formattedVerbes.length+"is Formatted verbes lenght")
+        
             if(currentButton*30>=formattedVerbes.length){
                 setToCurrent(currentButton-1)
             }
 
-        console.log("after trying current button is "+currentButton)
+       
 
         },[buttons])
 

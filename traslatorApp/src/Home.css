@@ -242,6 +242,7 @@ input[type="submit"]{
     padding:5px;
     border:2px solid brown;
     background-color: rosybrown;
+    margin-bottom:15px;
 }
 
 .translation h1{
@@ -258,7 +259,7 @@ input[type="submit"]{
 }
 
 footer{
-    margin-top:15px;
+    margin-top:0px;
     padding-top:0px;
     width:100%;
     background-color: brown;

@@ -19,7 +19,7 @@ useEffect(()=>{
 
 if(ref.current){
     observer.observe(ref.current)
-    console.log("current ref is "+ref.current)
+  
 }
 
 return ()=>{

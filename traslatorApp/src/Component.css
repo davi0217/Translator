@@ -9,7 +9,7 @@
 }
 
 .gameRulesAside{
-    background-color: rosybrown;
+    background-color: rgb(245, 217, 196);
 }
 
 
@@ -118,6 +118,7 @@ font-size:25px;
     text-align: center;
     padding-top:10px;
     width:100%;
+   
 }
 
 .gameBoard button{
@@ -275,6 +276,7 @@ button{
     width:100%;
    margin:0 auto;
     padding-bottom:20px;
+    
    
 }
 
@@ -320,6 +322,288 @@ img{
     min-width:30px;
 }
 
+
+.game-boxes-container{
+    
+    padding:20px;
+    padding-left:30px;
+    padding-right:30px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:10px;
+    min-height: 300px;
+    
+}
+
+.game-box{
+
+    background-color: green;
+    width:40%;
+    min-width:300px;
+   
+    text-align:center;
+    border-radius:15px ;
+}
+
+.guess .game-box-front{
+    background-image: url('./assets/guess.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 30%;
+    
+}
+.hangman .game-box-front{
+    background-image: url('./assets/hangman.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 80%;
+    
+}
+
+.game-box-front{
+    
+   
+    min-height: 180px;
+    border-radius:15px;
+    cursor:pointer;
+    
+}
+
+.game-box-front h5{
+    font-family:'Pixelify Sans';
+    background-color: brown;
+    color:white;
+    font-size:20px;
+    width:100%;
+    border-radius:15px 15px 0px 0px;
+    padding-bottom:5px;
+  
+    margin:0;
+}
+.game-box-back{
+   
+    background-color: green;
+    height: 180px;
+    border-radius:15px;
+
+    flex-wrap: wrap;   
+}
+
+.game-explanation{
+    background-color: rgb(247, 243, 156);
+    width:100%;
+    border-radius:15px 15px 0px 0px;
+    margin:0;
+    height: 50%;
+    padding-top:15px;
+    font-size:15px;
+    cursor:pointer;
+   
+}
+
+.game-trigger{
+    background-color: rgb(133, 39, 5);
+    color:white;
+    font-family:'Pixelify Sans';
+    font-size:25px;
+    width:100%;
+    height: 40%;
+    margin:0;
+    padding:0;
+
+    border-radius:0px 0px 15px 15px;
+    border-top: 2px solid brown;
+    cursor:crosshair;
+}
+
+.game-trigger:hover{
+    cursor:crosshair;
+    background-color: red;
+    transition:background-color 0.2s ease;
+
+}
+
+.hangman-display{
+    
+   display:flex;
+   gap:10px;
+   justify-content: left;
+}
+
+.hangman-container{
+   
+    width:40%;
+}
+
+.hangman-container img{
+    min-width:100%;
+    border-radius:0px 15px 15px 0px;
+}
+
+.hangman-word{
+    
+    width:100%;
+    align-self: right;
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.hangman-word input{
+    font-family:'Saira';
+    text-align: center;
+    font-size:25px;
+    width:4%;
+    height: 70%;
+    border:none;
+    background-color:rgb(245, 217, 196);
+    border-bottom:2px solid brown;
+    
+}
+.hangman-word input:hover{
+   
+    border:1px solid brown;
+    color:brown;
+    background-color: rgb(255, 255, 255);
+    transition:color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
+}
+
+.chars-container{
+   
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:3px;
+}
+
+.hangman-board{
+    background-color: rgb(245, 217, 196);
+}
+
+.hangman-board h1{
+    width:100%;
+    background-color: rgb(99, 1, 1);
+    margin:0;
+    padding-bottom:35px;
+    font-family:'Pixelify Sans';
+    font-size:40px;
+    color:white;
+}
+
+.hangman-board p{
+    font-size:30px;
+    margin:0;
+
+
+}
+
+.results-board{
+    background-color: rgb(245, 217, 196);
+    min-height: 300px;
+    width:100%;
+   margin:0 auto;
+    display:flex;
+    
+
+}
+
+.results-container{
+    width:100%;
+   
+    margin:0 auto;
+}
+
+.results-board .results-title{
+    border-radius:0px 0px 15px 15px;
+
+    padding-left:10px;
+    padding-right:10px;
+    padding-bottom:20px;
+    width: 50%;
+margin:0 auto;
+    background-color: rgb(229, 145, 11);
+    margin-bottom:50px;
+}
+.results-board .results-subtitle{
+    
+    margin:0 auto;
+    font-size:20px;
+    padding:10px;
+    border-radius:10px;
+background-color: rgb(246, 163, 112);
+margin-bottom:20px;
+opacity:0
+
+
+
+}
+
+.results-board .results-little-title{
+    margin:0 auto;
+    font-size:20px;
+    padding:10px;
+    border-radius:10px;
+    background-color: rgb(246, 163, 112);
+    opacity:0
+  
+}
+
+.results-board .visible-little-title{
+
+    margin:0 auto;
+    font-size:20px;
+    padding:10px;
+    border-radius:10px;
+    background-color: rgb(246, 163, 112);
+    opacity:1;
+    transform:translateY((0px,150px));
+    transition: opacity 1s ease;
+    margin-bottom:10px;
+}
+
+.visible-subtitle{
+    margin:0 auto;
+    font-size:20px;
+    margin-bottom:20px;
+    padding:10px;
+    border-radius:10px;
+    background-color: rgb(246, 163, 112);
+    opacity:1;
+    transform:translateY((0px,100px));
+    transition: opacity 0.5s ease;
+}
+
+.exit-button{
+    background-color: brown;
+    color:white;
+    border-radius:5px;
+    width:50px;
+
+    border:1px solid red;
+    padding:5px;
+    position:relative;
+    top:0px;
+    left:85%;
+    margin-bottom:15px;
+  
+
+}
+
+.hidden{
+    display: none;
+}
+
+
+
+
 @media(max-width:720px){
 
     main{
@@ -360,8 +644,99 @@ img{
        width:80%;
     }
 
+    .game-boxes-container{
+        flex-direction: column;
+        justify-content: center;
+        gap:30px;
+    }
 
+    .hangman-display{
+    
+   display:flex;
+   justify-content: left;
+   gap:0;
+}
+
+.hangman-container{
+   display:flex;
+    width:40%;
+    align-items:end;
+}
+
+.hangman-container img{
+    min-width:100%;
+    border-radius:0px 15px 0px 0px;
+}
+
+.hangman-word h3{
+    font-size:15px;
+}
+
+.hangman-word{
+    
+    
+    width:100%;
+    align-self: right;
+    display:flex;
+    flex-direction: column;
+  
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom:10px;
+    padding-right:10px;
+}
+
+.hangman-board h1{
+    font-family:'Pixelify Sans';
+    font-size:2.5rem;
+    color:white;
+    padding-bottom:20px;
+    background-color: rgb(99, 1, 1);
+    width:100%;
+    height:100%;
+    border-radius:0px 0px 10px 10px;
+    vertical-align: center;
+    
+}
+
+.hangman-word p{
+    margin:0px;
+    font-size:18px;
+    text-align: right;
    
+    width:100%;
+    
+}
+
+.chars-container{
+    
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.hangman-word input{
+    font-family:'Saira';
+    text-align: center;
+    font-size:15px;
+    width:4%;
+    min-width:8px;
+    height: 80%;
+    border:none;
+    background-color: rgb(245, 217, 196);
+    border-bottom:2px solid brown;
+    
+}
+.hangman-word input:hover{
+   
+    border:1px solid brown;
+    color:brown;
+    background-color: rgb(255, 255, 255);
+    transition:color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
+}
+  
+    
+   /* 
     .gameRulesContainer form{
         margin:0 auto;
         width:60%;
@@ -395,7 +770,7 @@ img{
 
     .gameRulesContainer select{
         width:50%;
-    }
+    } */
 
     .startPlaying{
         position:relative;
@@ -408,3 +783,18 @@ img{
 
 }
 
+@media(max-width:400px){
+    .game-box{
+
+   
+    width:40%;
+    min-width:200px;
+   
+    text-align:center;
+    border-radius:15px ;
+}
+
+.game-explanation{
+    font-size: 13px;
+}
+}
