@@ -735,8 +735,7 @@ opacity:0
     transition:color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
 }
   
-    
-   /* 
+     
     .gameRulesContainer form{
         margin:0 auto;
         width:60%;
@@ -770,7 +769,7 @@ opacity:0
 
     .gameRulesContainer select{
         width:50%;
-    } */
+    } 
 
     .startPlaying{
         position:relative;
