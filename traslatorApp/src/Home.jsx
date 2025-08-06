@@ -15,6 +15,9 @@ import spanish from './assets/spanish-flag.png'
 import french from './assets/french.png'
 import github from './assets/github.svg'
 import linkedin from './assets/linkedin-logo.png'
+import creme from './assets/creme.png'
+
+
 
 function Home() {
 
@@ -38,6 +41,7 @@ return <main onClick={(e)=>{
 
 <Input handleSearch={handlerSearch} handlerLanguage={handlerLanguage} language={language}/>
 <Display word={wordToSearch} language={language}/>
+<Challenge/>
 <Footer/>
 </main>
   
@@ -236,6 +240,135 @@ function Display({word, language}){
       </div>}
       </div>  }
   </>
+}
+
+
+function Challenge(){
+
+  const {data}=useContext(WordsContext)
+
+  const [containerVisible, setContainerVisible]=useState(false)
+  const [wordsVisible, setWordsVisible]=useState(false)
+  const [textVisible, setTextVisible]=useState(false)
+  const [words, setWords]=useState()
+  
+
+  const [rotation, setRotation]=useState(0)
+
+
+  useEffect(()=>{
+
+        let newWords=[]
+
+        let value=1
+
+        for(let i=0; i<3;i++){
+
+          let goOn=true
+
+            while(goOn){
+
+          let newNum=Math.floor(Math.random()*data.length)
+
+          if(!newWords.some((w)=>{
+              return w.word==data[newNum.original]})){
+            newWords.push({"word":data[newNum].original, "time":value})
+            value++
+            goOn=false;
+          }
+        }
+
+        }
+
+        setWords(newWords)
+  },[])
+
+  const handleText=function(){
+    setTextVisible(true)
+  }
+  useEffect(()=>{
+
+
+    
+if(rotation>360*10){
+    setTimeout(()=>{
+      setRotation(rotation-1)
+    },0.05)}else if((rotation<360*10) && (rotation>360*3)){
+      setTimeout(()=>{
+      setRotation(rotation-1)
+    },0.5)
+    }else if(rotation>0){
+      setTimeout(()=>{
+      setRotation(rotation-1)
+    },1)
+
+    handleText()
+    }
+
+  
+
+  },[rotation])
+
+  const handleContainer=function(){
+    setContainerVisible(true)
+  }
+
+
+  const handleWords=function(){
+
+    setRotation(360*30)
+    setTimeout(()=>{
+      setWordsVisible(true)
+    },2000)
+    
+  }
+
+  const passClass=function(){
+    if(textVisible && containerVisible){
+      return "challenge-container-visible-2"
+    }else if(containerVisible){
+      return "challenge-container-visible"
+    }else{
+      return "challenge-container"
+    }
+  }
+ 
+
+  return <aside className="challenge-board">
+
+    <h1 onClick={()=>{
+      handleContainer()
+    }}>Hâte d'un ptit défi?</h1>
+
+    <div className={passClass()}>
+<h2>Fais girer la roulette pour chosir trois mots</h2>
+
+<div className='roulette-container'>
+  <img style={{transform:`rotate(${rotation}deg)`}} onClick={()=>{
+
+    handleWords()
+  }}src={creme} alt="" />
+</div>
+
+<div className="words-challenge-container">
+
+  {words?.map((w)=>{
+
+
+    return <div className={wordsVisible?`word-challenge-visible-${w.time}`:`word-challenge-invisible`}>
+      <p>{w.word}</p> 
+    </div>
+  })}
+</div>
+
+<input  className={textVisible?"text-challenge-container-visible":"text-challenge-container"} type="textarea" placeholder="C'était un temps..." />
+
+
+
+    </div>
+    
+
+  </aside>
 }
 
 export function Footer(){

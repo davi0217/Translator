@@ -337,6 +337,133 @@ justify-content: left;
 align-items: center;
 }
 
+.challenge-board{
+    background-color: red;
+    margin:0;
+}
+
+.challenge-board h1{
+    margin:0;
+    width:100%;
+    background-color: rgb(222, 109, 87);
+    padding-bottom:20px;
+    border-bottom:8px solid rgb(120, 21, 21);
+}
+
+
+
+.challenge-container{
+    
+    height: 0px;
+   
+}
+
+.challenge-container-visible{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    height: 400px;
+    transition:height 1s ease;
+}
+.challenge-container-visible-2{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    height: 700px;
+    transition:height 1s ease;
+}
+
+.challenge-container *{
+    display:none;
+}
+
+.challenge-container-visible h2, .challenge-container-visible-2 h2{
+    margin:0;
+    width:100%;
+    padding-top:20px;
+   
+   
+}
+
+.roulette-container{
+    padding-top:10px;
+   
+    width:30%;
+    text-align:center;
+    align-self: center;
+    
+
+}
+
+.roulette-container img{
+    min-width: 50%;
+    cursor:pointer;
+   
+}
+
+.words-challenge-container{
+    
+    width:70%;
+    margin:0 auto;
+    display:flex;
+    justify-content: space-around;
+    
+}
+
+.word-challenge-invisible{
+    background-color: green;
+    width:20%;
+    border-radius:10px;
+    opacity:0;
+}
+.word-challenge-visible-1{
+    background-color: rgb(215, 81, 51);
+    width:20%;
+    border-radius:10px;
+    opacity:1;
+    transform:translateY((0px,150px));
+    transition:opacity 2s linear;
+}
+.word-challenge-visible-2{
+    background-color: rgb(215, 81, 51);
+    width:20%;
+    border-radius:10px;
+    opacity:1px;
+    transform:translateY((0px,150px));
+    transition:opacity 3s linear;
+}
+.word-challenge-visible-3{
+    background-color: rgb(215, 81, 51);
+    width:20%;
+    border-radius:10px;
+    opacity:1px;
+    transform:translateY((0px,150px));
+    transition:opacity 4s linear;
+}
+
+.text-challenge-container{
+    background-color: bisque;
+    padding:20px;
+    width:80%;
+    margin:0 auto;
+    margin-top:20px;
+    min-height: 200px;
+    opacity:0;
+}
+.text-challenge-container-visible{
+    background-color: bisque;
+    padding:20px;
+    width:80%;
+    margin:0 auto;
+    margin-top:50px;
+    min-height: 200px;
+    opacity:1;
+    transition:opacity 0.8s ease;
+}
+
+
 @media(max-width:830px){
 
     .navContainer{

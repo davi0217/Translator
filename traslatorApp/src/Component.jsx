@@ -174,48 +174,7 @@ function GameRules({}){
 
     return <>
     
-   {/*  {!started && <div>
-        <div className='gameRulesContainer'>
-        <h1>Choisissez les règles pour votre jeu</h1>
-
-        <form action="post" onSubmit={(e)=>{
-            e.preventDefault()
-            handleRules({"number":e.target.number.value, "time":e.target.minutos.value, "automatique":e.target.automatique.checked})
-            startGame()
-
-        }}>
-        <table>
-            <tbody>
-            <tr>
-                <td>Nombre de mots</td>
-                <td><input type="number" name="number" max={formattedVerbes.length} min={formattedVerbes.length>5?5:1} defaultValue={formattedVerbes.length>5?5:1}/></td>
-            </tr>
-            <tr>
-                <td>Temps</td>
-                <td><select name="minutos" id="minutos">
-                    <option value={5} default>5 minutes</option>
-                    <option value={10}>10 minutes</option>
-                    <option value={15}>15 minutes</option>
-                    </select></td>
-            </tr>
-            <tr>
-                <td>Automatique</td>
-                <td><input name="automatique" type="checkbox"/></td>     
-            </tr>
-            <tr>
-
-                <td></td>
-                <td><input type="submit" value="On y va"/></td>
-            </tr>
-            </tbody>
-        </table>
-    </form>
-
-    </div>
-    </div>
-    } */
-    
-    !started && <div className="game-boxes-container">
+   { !started && <div className="game-boxes-container">
 
         {games.map((g)=>{
                 return <div className={`game-box ${g.game}`}>
@@ -591,7 +550,7 @@ function Hangman(){
             </div>
             <div className="hangman-word">
                  
-                <p>Completez la parole: <span style={{fontWeight:"bold", color:"brown"}}>{
+                <p>Completez la parole: <br /><span style={{fontWeight:"bold", color:"brown", textAlign:"center", fontSize:"20px"}}>{
 
                     currentTranslation
                    
@@ -652,9 +611,9 @@ return <aside className='results-board'>
 
         <h1 className='results-title'>{resultData.outcome=="win"?"Felicitations! Vous avez gagné":"Desolé. Vous avez perdu"}</h1>
 
-        <h2 className={isVisible?" visible-subtitle":"results-subtitle"}> Temps utilisé: {(Math.floor(resultData.time/60))==0?"":Math.floor(resultData.time/60)+" minutes et" }  {resultData.time%60} secondes</h2>
+        <h2 className={isVisible?" visible-subtitle":"results-subtitle"}> Temps utilisé: <br />{(Math.floor(resultData.time/60))==0?"":Math.floor(resultData.time/60)+" minutes et" }  {resultData.time%60} secondes</h2>
 
-        <h2 className={isVisible?"visible-little-title":"results-subtitle"}>La parole était {resultData.word}</h2>
+        <h2 className={isVisible?"visible-little-title":"results-subtitle"}>La parole était: <br /> {resultData.word}</h2>
    
     <button className="exit-button" onClick={()=>{
         handleStartPlaying()
