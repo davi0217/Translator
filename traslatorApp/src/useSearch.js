@@ -15,11 +15,11 @@ export function useSearch(){
   handleMessage({"type":"", "text":""})
 
   if(e.length>30){
-    handleMessage({"type":"repeated", "text":"Your word is too long. Try again"})
+    handleMessage({"type":"repeated", "text":"Ton mot est trop long"})
     return 
   }
   if(e==" " || e.trim()==""){
-    handleMessage({"type":"repeated", "text":"You have to write a word"})
+    handleMessage({"type":"repeated", "text":"Vous dévez écrire un mot"})
     return 
   }
      

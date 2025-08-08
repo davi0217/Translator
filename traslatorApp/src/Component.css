@@ -597,9 +597,125 @@ opacity:0
 
 }
 
+.blog-board{
+
+    min-height: 400px;
+    background-color: rgb(254, 228, 228);
+    padding-bottom:50px;
+}
+
+.blog-title{
+    background-image: url("./assets/france.png");
+    height: 100px;
+    display: flex;
+align-items: end;
+}
+
+.blog-title h1{
+    background-color: rgb(254, 228, 228);
+    margin:0 auto;
+    border-radius:10px 10px 0px 0px;
+
+}
+
+.entries-container{
+
+    width:90%;
+    margin:0 auto;
+    display:flex;
+
+    flex-direction:column;
+    justify-content: center;
+    gap:30px;
+    padding:10px;
+    margin-top:30px;
+
+}
+
+.entry-container{
+    cursor:pointer;
+    background-image:linear-gradient(to left, rgb(244, 169, 149), rgb(210, 117, 88));
+    display:flex;
+    padding:15px;
+    border-radius: 10px;
+    padding-left:0;
+    padding-top:0;
+
+}
+.entry-container:hover{
+    background-color: rgb(249, 172, 85);
+    display:flex;
+    padding:15px;
+    border-radius: 10px;
+    padding-left:0;
+    padding-top:0;
+    transition:background-color 0.5s ease, padding 0.5s ease;
+
+}
+
+.profile-entry-container{
+    min-width: 20%;
+    max-width: 20%;
+    
+    border-radius:10px 0px 0px 0px;
+    object-fit: cover;
+    padding-top :10px;
+    padding-left:10px;
+
+   
+}
+
+.profile-entry-container img{
+    max-width:100%;
+    border-radius:10px 0px 0px 0px;
+    
+
+}
+
+.entry-info{
+    padding-left:10px;
+    width:100%;
+
+    height: 100px;
+    overflow: hidden;
+    line-break: anywhere;
+}
+.entry-info-visible{
+    padding-left:10px;
+    width:100%;
+    height: auto;
+    line-break: anywhere;
+    
+    
+}
+.entry-info-visible h2, .entry-info h2{
+
+    margin:0;
+    
+    width:auto;
+    text-align: left;
+}
+
+
+.entry-header{
+    width:100%;
+  
+    display:flex;
+    padding-top:5px;
+    justify-content: end;
+
+    gap:10%;
+}
+
+.entry-text{
+    padding-left:10px;
+}
+
+
 .hidden{
     display: none;
 }
+
 
 
 
@@ -798,5 +914,19 @@ opacity:0
 
 .game-explanation{
     font-size: 13px;
+}
+
+
+
+
+.entry-info-visible h2, .entry-info h2{
+    width:auto;
+    margin:0;
+    padding:0;
+    gap:0;
+
+}
+.entry-text{
+    font-size:11px;
 }
 }

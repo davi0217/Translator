@@ -12,6 +12,7 @@ import { WordsContext } from './App.jsx'
 import trash from './assets/trash-can.svg'
 import hangman from './assets/hangman.png'
 import guess from './assets/guess.png'
+import france from './assets/france.png'
 
 const hangmanList =[
   "https://i.imgur.com/kReMv94.png",
@@ -29,9 +30,10 @@ const fixedLetters="qwertyuiopñlkjhgfdsazxcvbnmç"
 export  default function Component(){
 
      const {verbes, buttons, counters, currentButton, updateCounter, setToCurrent, actualCounter}=useDisplayVerbes()
-     const {handleOverMenu, showWord, playingGame, handleStartPlaying, removeData, handleWordFromUrl, wordFromUrl}=useContext(WordsContext)
+     const {handleOverMenu,webText, showWord, playingGame, handleStartPlaying, removeData, handleWordFromUrl, wordFromUrl}=useContext(WordsContext)
 
      const {filter}=useParams()
+
    useEffect(()=>{
     handleWordFromUrl(filter)
    },[filter])
@@ -47,9 +49,9 @@ export  default function Component(){
  
     <Navigator wordFromUrl={wordFromUrl}/>
 
-    {!playingGame &&  <div className="Component">
+    {(!playingGame && wordFromUrl!="Blog") &&  <div className="Component">
 
-    <label className="wordsToShowLabel" htmlFor="wordsToShow">Paroles montrées: </label>
+    <label className="wordsToShowLabel" htmlFor="wordsToShow">{webText.comp?.counterLabel}: </label>
     <select  className="wordsToShow" name="wordsToShow" id="wordsToShow" onChange={(v)=>{
         updateCounter(v.target.value)
     }}>
@@ -85,7 +87,7 @@ export  default function Component(){
 
     <button  className="startPlaying" onClick={()=>{
         handleStartPlaying()
-    }}> Jouer</button>
+    }}>{webText.comp?.playButton}</button>
     
     <ul>
         {verbes && <div className="wordContainer-container">
@@ -118,6 +120,12 @@ export  default function Component(){
         
     
         </aside>}
+
+{(!playingGame && wordFromUrl=="Blog") && <div className="blog-board">
+
+    <Blog/>
+    
+    </div>}
     
     <Footer/>
     </main>
@@ -126,6 +134,7 @@ export  default function Component(){
 
 function GameRules({}){
 
+    const {webText}=useContext(WordsContext)
 
     const [choosenGame, setChoosenGame]=useState(false)
     const [rules, setRules]=useState({"number": 1,"time":5, "automatique":false})
@@ -133,13 +142,13 @@ function GameRules({}){
 
     const [games, setGames]=useState([
         {"game":"guess",
-            "title":"Dévine la parole",
+            "title":webText.comp?.gameTitle1,
          "showBack":false,
-        "explanation":"Jeu où tu devines des mots mémorisés, puis donnes leur traduction correcte pour gagner des points"}, 
+        "explanation":webText.comp?.guess.guessInfo}, 
         {"game":"hangman",
-            "title":"Le hangman",
+            "title":webText.comp?.gameTitle2,
         "showBack":false,
-    "explanation":"Jeu où tu devines un mot lettre par lettre avant que le dessin du pendu ne soit complet" }])
+    "explanation":webText.comp?.hangman.hangmanInfo}])
 
 
     useEffect(()=>{
@@ -210,6 +219,8 @@ function Rules(){
     const [rules, setRules]=useState({"number": 1,"time":5, "automatique":false})
     const [started, setStarted]=useState(false)
 
+    const {webText}=useContext(WordsContext)
+
    
 
     useEffect(()=>{
@@ -231,7 +242,7 @@ function Rules(){
     return <>
      {!started && <div>
         <div className='gameRulesContainer'>
-        <h1>Choisissez les règles pour votre jeu</h1>
+        <h1>{webText.comp?.guess.guessInstructionsTitle}</h1>
 
         <form action="post" onSubmit={(e)=>{
             e.preventDefault()
@@ -242,11 +253,11 @@ function Rules(){
         <table>
             <tbody>
             <tr>
-                <td>Nombre de mots</td>
+                <td>{webText.comp?.guess.instructionsNumber}</td>
                 <td><input type="number" name="number" max={formattedVerbes.length} min={formattedVerbes.length>5?5:1} defaultValue={formattedVerbes.length>5?5:1}/></td>
             </tr>
             <tr>
-                <td>Temps</td>
+                <td>{webText.comp?.guess.instructionsTime}</td>
                 <td><select name="minutos" id="minutos">
                     <option value={5} default>5 minutes</option>
                     <option value={10}>10 minutes</option>
@@ -254,13 +265,13 @@ function Rules(){
                     </select></td>
             </tr>
             <tr>
-                <td>Automatique</td>
+                <td>{webText.comp?.guess.instructionsAutomatique}</td>
                 <td><input name="automatique" type="checkbox"/></td>     
             </tr>
             <tr>
 
                 <td></td>
-                <td><input type="submit" value="On y va"/></td>
+                <td><input type="submit" value={webText.comp?.guess.instructionsButton}/></td>
             </tr>
             </tbody>
         </table>
@@ -279,7 +290,7 @@ function Rules(){
 function Game({rules}){
 
     
-    const {formattedVerbes, showWord, handleStartPlaying}=useContext(WordsContext)
+    const {formattedVerbes, webText, showWord, handleStartPlaying}=useContext(WordsContext)
     const [playing, setPlaying]=useState(true)
     const [clock, setClock]=useState(rules.time*60)
     const [numberPlaying, setNumberPlaying]=useState(Math.floor(Math.random()*formattedVerbes.length))
@@ -350,7 +361,7 @@ function Game({rules}){
     playing&&<div className="gameBoard">
 
         <p>{rules.automatique?"Playing automatique":""}</p>
-    <p><span>{Math.trunc(clock/60)}</span>: <span>{clock%60}</span> left</p>
+    <p><span>{Math.trunc(clock/60)}</span>: <span>{clock%60}</span> {webText.comp?.guess.guessLeft}</p>
 
     <div>
         <div className='wordContainer'>  
@@ -366,7 +377,7 @@ function Game({rules}){
 
     </div>
 
-    <p>Words displayed: <span>{wordsLeft.current}</span> / {rules.number}</p>
+    <p>{webText.comp?.guess.guessDisplayed}: <span>{wordsLeft.current}</span> / {rules.number}</p>
     </div>
 }
     </>
@@ -377,7 +388,7 @@ function Game({rules}){
 
 function Hangman(){
 
-    const {formattedVerbes}=useContext(WordsContext)
+    const {formattedVerbes, webText}=useContext(WordsContext)
     const [playing, setPlaying]=useState(true)
 
     const [randomWord, setRandomWord]=useState(formattedVerbes[Math.floor(Math.random()*formattedVerbes.length)].original.toLowerCase())
@@ -541,7 +552,7 @@ function Hangman(){
 
     return <>
      { !result.outcome && <div className="hangman-board">
-        <h1>Le hang-man</h1>
+        <h1>{webText.comp?.hangman.hangmanTitle}</h1>
 
         <div className="hangman-display">
             
@@ -550,12 +561,12 @@ function Hangman(){
             </div>
             <div className="hangman-word">
                  
-                <p>Completez la parole: <br /><span style={{fontWeight:"bold", color:"brown", textAlign:"center", fontSize:"20px"}}>{
+                <p>{webText.comp?.hangman.hangmanComplete}: <br /><span style={{fontWeight:"bold", color:"brown", textAlign:"center", fontSize:"20px"}}>{
 
                     currentTranslation
                    
             }</span></p>
-                <h3>{mistakes.current}/7 échecs {wrongLetters.current.length>0 && ":"} <br />
+                <h3>{mistakes.current}/7 {webText.comp?.hangman.hangmanError} {wrongLetters.current.length>0 && ":"} <br />
                     {wrongLetters.current.length>0 && wrongLetters.current.map((l)=>{
                         return <span style={{color:"red"}}>{l+" - "}</span>
                     })}
@@ -592,7 +603,7 @@ function Hangman(){
 function Result({resultData}){
 
     const [isVisible,setIsVisible]=useState(false)
-    const {handleStartPlaying}=useContext(WordsContext)
+    const {handleStartPlaying, webText}=useContext(WordsContext)
 
     const handleVisibility=function(){
         console.log("charging after loading")
@@ -609,19 +620,82 @@ return <aside className='results-board'>
    
     <div className="results-container">
 
-        <h1 className='results-title'>{resultData.outcome=="win"?"Felicitations! Vous avez gagné":"Desolé. Vous avez perdu"}</h1>
+        <h1 className='results-title'>{resultData.outcome=="win"?webText.comp?.hangman.hangmanWinTitle:webText.comp?.hangman.hangmanLoseTitle}</h1>
 
-        <h2 className={isVisible?" visible-subtitle":"results-subtitle"}> Temps utilisé: <br />{(Math.floor(resultData.time/60))==0?"":Math.floor(resultData.time/60)+" minutes et" }  {resultData.time%60} secondes</h2>
+        <h2 className={isVisible?" visible-subtitle":"results-subtitle"}> {webText.comp?.hangman.hangmanTime} <br />{(Math.floor(resultData.time/60))==0?"":Math.floor(resultData.time/60)+webText.comp?.hangman.hangmanMinutes }  {resultData.time%60} {webText.comp?.hangman.hangmanSeconds}</h2>
 
-        <h2 className={isVisible?"visible-little-title":"results-subtitle"}>La parole était: <br /> {resultData.word}</h2>
+        <h2 className={isVisible?"visible-little-title":"results-subtitle"}>{webText.comp?.hangman.hangmanReveal} <br /> {resultData.word}</h2>
    
     <button className="exit-button" onClick={()=>{
         handleStartPlaying()
-    }}>Sortir</button>
+    }}>{webText.comp?.hangman.hangmanExit}</button>
     </div>
 
 
 
 
 </aside>
+}
+
+function Blog(){
+
+    const {entries, webText, handleEntries, handleRemoveBlog}=useContext(WordsContext)
+
+
+ 
+
+
+
+    const handleBlogs=function(b){
+
+        let newBlogs=entries.map((blog)=>{
+            if(blog.text==b){
+                blog.showing=!blog.showing
+            }
+            return blog
+        })
+
+        handleEntries(newBlogs)
+
+    }
+
+
+    return <>
+
+    <div className="blog-title">
+        <h1>{webText.comp?.blog.blogTitle}</h1>
+    </div>
+
+    {entries &&  <div className='entries-container'>
+
+       
+
+            {entries.map((b)=>{
+               return  <div className='entry-container'>
+            <div className='profile-entry-container'>
+                <img src={b.img} alt="" />
+            </div>
+
+                <div onClick={(e)=>{
+
+                    if(e.target.className!="remove-blog-button"){
+                    handleBlogs(b.text)}
+                }} className={b.showing?'entry-info-visible':'entry-info'}>
+                <div className="entry-header"><h2>{b.date}</h2> <span><img className="remove-blog-button" onClick={()=>{
+                    handleRemoveBlog(b.text)
+                }} src={trash} alt="" /></span></div>
+                <div className='entry-text'>
+                    <p>{b.text}</p>
+                </div>
+            </div>
+            </div>
+            })}
+
+           
+       
+    </div>
+}
+
+{entries.length==0 && <h1> {webText.comp?.blog.blogEmpty}</h1>}
+    </>
 }

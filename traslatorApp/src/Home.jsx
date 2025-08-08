@@ -16,12 +16,13 @@ import french from './assets/french.png'
 import github from './assets/github.svg'
 import linkedin from './assets/linkedin-logo.png'
 import creme from './assets/creme.png'
+import { wordsList } from './muestra.js'
 
 
 
 function Home() {
 
-  const {handleOverMenu}=useContext(WordsContext)
+  const {handleOverMenu, webText, handleWebText}=useContext(WordsContext)
 
 
   const { language, wordToSearch, handlerSearch, handlerLanguage}=useSearch()
@@ -35,9 +36,17 @@ return <main onClick={(e)=>{
    }}>
   <Navigator/>
 
-  <h1 className="title">Ton app de traduction</h1>
+  <h1 className="title">{webText.home?.title}</h1>
 
-  <h2 className="subtitle">Traduisez automatiquement les mots que vous souhaitez et enregistrez-les dans votre propre espace personnel</h2>
+  <h2 className="subtitle" >{webText.home?.subtitle}</h2>
+ <select className="select-lang" onChange={(e)=>{
+
+  handleWebText(e.target.value)
+
+ }}name="lang" id="lang">
+  <option value="fr" selected={webText.home.title=="Ton app de traduction"}>Français</option>
+  <option value="es" selected={webText.home.title=="Tu app de traducción"}>Español</option>
+ </select>
 
 <Input handleSearch={handlerSearch} handlerLanguage={handlerLanguage} language={language}/>
 <Display word={wordToSearch} language={language}/>
@@ -51,20 +60,21 @@ return <main onClick={(e)=>{
 
 export function Navigator({wordFromUrl}){
 
-  const {overMenu, handleOverMenu}=useContext(WordsContext)
+  const {overMenu, handleOverMenu, webText}=useContext(WordsContext)
 
  
   return <>
 
   <div className="navContainer">
     <nav>
-      <Link to="/" style={wordFromUrl?{}:{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}}>Rechercher</Link>
+      <Link to="/" style={wordFromUrl?{}:{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}}>{webText.nav?.nav1}</Link>
      
-      <Link to="/component/Verbe" style={wordFromUrl=="Verbe"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>Verbes</Link>
-      <Link to="/component/Adjectif" style={wordFromUrl=="Adjectif"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}} >Adjectifs</Link>
-      <Link to="/component/Adverbe" style={wordFromUrl=="Adverbe"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>Adverbes</Link>
-      <Link to="/component/Vocabulaire" style={wordFromUrl=="Vocabulaire"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>Vocabulaire</Link>
-      <Link to="/component/Façons" style={wordFromUrl=="Façons"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>Façons de dire</Link>
+      <Link to="/component/Verbe" style={wordFromUrl=="Verbe"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>{webText.nav?.nav2}</Link>
+      <Link to="/component/Adjectif" style={wordFromUrl=="Adjectif"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}} >{webText.nav?.nav3}</Link>
+      <Link to="/component/Adverbe" style={wordFromUrl=="Adverbe"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>{webText.nav?.nav4}</Link>
+      <Link to="/component/Vocabulaire" style={wordFromUrl=="Vocabulaire"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>{webText.nav?.nav5}</Link>
+      <Link to="/component/Blog" style={wordFromUrl=="Blog"?{borderBottom:"none",backgroundColor:"rgb(245, 217, 196)"}:{}}>{webText.nav?.nav6}</Link>
+     
     </nav>
   </div>
 
@@ -81,13 +91,14 @@ export function Navigator({wordFromUrl}){
    {wordFromUrl && <h2 className="menu-alt-logo" style={{color:"white", fontSize:"30px"}}>{wordFromUrl} <img src={flecha} style={{minWidth:"10px"}} alt="" /></h2>}
    <div className={overMenu?"altNav":"hidden"}>
     <nav>
-      <Link to="/" style={wordFromUrl?{}:{backgroundColor:"rgb(245, 217, 196)"}}>Rechercher</Link>
+      <Link to="/" style={wordFromUrl?{}:{backgroundColor:"rgb(245, 217, 196)"}}>{webText.nav?.nav1}</Link>
      
-      <Link to="/component/Verbe" style={wordFromUrl=="Verbe"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>Verbes</Link>
-      <Link to="/component/Adjectif" style={wordFromUrl=="Adjectif"?{backgroundColor:"rgb(245, 217, 196)"}:{}} >Adjectifs</Link>
-      <Link to="/component/Adverbe" style={wordFromUrl=="Adverbe"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>Adverbes</Link>
-      <Link to="/component/Vocabulaire" style={wordFromUrl=="Vocabulaire"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>Vocabulaire</Link>
-      <Link to="/component/Façons" style={wordFromUrl=="Façons"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>Façons de dire</Link>
+      <Link to="/component/Verbe" style={wordFromUrl=="Verbe"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>{webText.nav?.nav2}</Link>
+      <Link to="/component/Adjectif" style={wordFromUrl=="Adjectif"?{backgroundColor:"rgb(245, 217, 196)"}:{}} >{webText.nav?.nav3}</Link>
+      <Link to="/component/Adverbe" style={wordFromUrl=="Adverbe"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>{webText.nav?.nav4}</Link>
+      <Link to="/component/Vocabulaire" style={wordFromUrl=="Vocabulaire"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>{webText.nav?.nav5}</Link>
+      <Link to="/component/Blog" style={wordFromUrl=="Blog"?{backgroundColor:"rgb(245, 217, 196)"}:{}}>{webText.nav?.nav6}</Link>
+    
     </nav>
    </div>
     
@@ -101,7 +112,7 @@ function Input({handleSearch,  handlerLanguage, language}){
 
   const [value, setValue]=useState("")
 
-  const {handleAddWords, handlerFilter, filter}=useContext(WordsContext)
+  const {handleAddWords, handlerFilter, filter, webText}=useContext(WordsContext)
   const [actualFilter, setActualFilter]=useState("Verbe")
 
   const [seeOptions, setSeeOptions]=useState(true)
@@ -134,38 +145,47 @@ function Input({handleSearch,  handlerLanguage, language}){
       handleSearch(value)
       handlerFilter(e.target.filter.value)
       e.target.search.value=""
+      if(window.innerWidth>750){
+        window.scrollTo(0,180)
+      }else if(window.innerWidth<=750 && window.innerWidth>450){
+        window.scrollTo(0,350)
+      }else if(window.innerWidth<=450 && window.innerWidth>350){
+        window.scrollTo(0,400)
+      }else if(window.innerWidth<=350){
+        window.scrollTo(0,500)
+      }
     }} >
 
       <div className='inputContainer visible'>
-    <label htmlFor="filter">Choisissez la catégorie </label>
+    <label htmlFor="filter">{webText.home?.inputs.categoryLabel} </label>
     <select name="filter" id="filter" onChange={(e)=>{
       handlerFilter(e.target.value)
     }}>
-      <option value="Verbe" default>Verbe</option>
-      <option value="Adjectif">Adjectif</option>
-      <option value="Adverbe">Adverbe</option>
-      <option value="Vocabulaire">Vocabulaire</option>
-      <option value="Façons">Façon de dire</option>
+
+      {webText.home?.inputs.categories.map((c)=>{
+        return <option value={c} >{c}</option>
+      })}
+
     </select>
     </div>
     <div  className='inputContainer '>
-    <label htmlFor="language"> <img  className="flag-logo" src={language=="français"?french:spanish}></img>Language</label>
+    <label htmlFor="language"> <img  className="flag-logo" src={language=="français"?french:spanish}></img>{webText.home?.inputs.langLabel}</label>
     <select name="language" id="language" onChange={()=>{
       
       handlerLanguage()
     }}>
-      <option value="french-spanish" default>Français à spagnol</option>
-      <option value="spanish-french">Spagnol à français</option>
+      <option value="french-spanish" default>{webText.home?.inputs?.lang1}</option>
+      <option value="spanish-french">{webText.home?.inputs.lang2}</option>
     </select>
     </div>
     <div className='inputContainer'>
-    <label  htmlFor="search">Chercher</label>
+    <label  htmlFor="search">{webText.home?.inputs.searchLabel}</label>
     <input type="text" name="search"  onChange={(e)=>{
       handleChange(e.target.value)
     }}/>
     </div>
   <div  className='inputContainer'>
-    <input type="submit" value="Envoyer" />
+    <input type="submit" value={webText.home?.inputs.sendLabel} />
     </div>
   </form>
 
@@ -180,11 +200,11 @@ function Input({handleSearch,  handlerLanguage, language}){
     e.target.translation.value=""
 
   }}  >
-    <label htmlFor="original">Ou entrez-les vous-même{seeOptions?<span><img className='arrow-logo' src={flecha} alt="" /></span>:" "}</label>
+    <label htmlFor="original">{webText.home?.inputs.selfEntryTitle}{seeOptions?<span><img className='arrow-logo' src={flecha} alt="" /></span>:" "}</label>
     <div className ={seeOptions?"hidden":""}>
-    <input type="text" name="original" placeholder='Français...' />
-    <input type="text" name="translation" placeholder='Spagnol...' />
-    <input type="submit" value="Ajouter" />
+    <input type="text" name="original" placeholder={webText.home?.inputs.selfEntry1} />
+    <input type="text" name="translation" placeholder={webText.home?.inputs.selfEntry2} />
+    <input type="submit" value={webText.home?.inputs.selfEntryButton} />
     </div>
   </form>
   </div>
@@ -197,7 +217,7 @@ function Display({word, language}){
   const [translation, setTranslation]=useState("")
   const [loading, setLoading]=useState(false)
 
-  const {handleAddWords, filter, message, handleMessage}=useContext(WordsContext)
+  const {handleAddWords, webText, filter, message, handleMessage}=useContext(WordsContext)
 
 
   useEffect(()=>{
@@ -226,7 +246,7 @@ function Display({word, language}){
 
   return <>
 
-    {loading?<h1 className="loading-message" style={{color:"red"}}>Chargement en cours..</h1>:<h1></h1>}  
+    {loading?<h1 className="loading-message" style={{color:"red"}}>{webText.home?.display.loading}</h1>:<h1></h1>}  
     {message.type=="added" && <h1 className="loading-message" style={{color:"green"}}>{message.text}</h1>}
     {message.type=="repeated" && <h1 className="loading-message" style={{color:"red"}}>{message.text}</h1>}
 
@@ -245,13 +265,21 @@ function Display({word, language}){
 
 function Challenge(){
 
-  const {data}=useContext(WordsContext)
+  const {data, handleAddBlog, webText}=useContext(WordsContext)
 
   const [containerVisible, setContainerVisible]=useState(false)
   const [wordsVisible, setWordsVisible]=useState(false)
   const [textVisible, setTextVisible]=useState(false)
-  const [words, setWords]=useState()
+  const [firstVisible, setFirstVisible]=useState(false)
+  const [buttonVisible, setButtonVisible]=useState(false)
+  const [words, setWords]=useState([])
+  const [textValue, setTextValue]=useState([])
+  const [textToPass, setTextToPass]=useState(" ")
   
+  const [message, setMessage]=useState({
+    "status": false,
+    "text":" "
+  })
 
   const [rotation, setRotation]=useState(0)
 
@@ -272,7 +300,7 @@ function Challenge(){
 
           if(!newWords.some((w)=>{
               return w.word==data[newNum.original]})){
-            newWords.push({"word":data[newNum].original, "time":value})
+            newWords.push({"word":data[newNum].original, "time":value, "used":false})
             value++
             goOn=false;
           }
@@ -281,11 +309,18 @@ function Challenge(){
         }
 
         setWords(newWords)
-  },[])
+  },[wordsVisible])
 
   const handleText=function(){
     setTextVisible(true)
   }
+
+  const handleButton=function(t){
+    setButtonVisible(t)
+  }
+
+
+
   useEffect(()=>{
 
 
@@ -311,15 +346,19 @@ if(rotation>360*10){
 
   const handleContainer=function(){
     setContainerVisible(true)
+    setTimeout(()=>{
+        setFirstVisible(true)
+    },180)
   }
 
 
   const handleWords=function(){
+    setWordsVisible(false)
 
     setRotation(360*30)
     setTimeout(()=>{
       setWordsVisible(true)
-    },2000)
+    },1000)
     
   }
 
@@ -332,18 +371,91 @@ if(rotation>360*10){
       return "challenge-container"
     }
   }
+
+  const passWordClass=function(w){
+
+    if(wordsVisible && w.used){
+      return `word-challenge-visible-${w.time}-green`
+    }else if(wordsVisible){
+      return `word-challenge-visible-${w.time}`
+    }else{
+      return 'word-challenge-invisible'
+    }
+  }
+
+  const handleTextValue=function(v){
+    let newValue=v.split(/[ ,'?!-.;\n]+/)
+    setTextValue(newValue)
+  }
+
+  
+
+  useEffect(()=>{
+
+    if(words.length>0 && textToPass.length>0 && !words.some((w)=>{
+
+      
+          return w.used==false
+    })){
+      handleButton(true)
+    }else{
+      handleButton(false)
+    }
+
+    words.forEach((w)=>{
+      console.log(w)
+    })
+
+    if(textValue.length>1){
+
+    let newWords=words.map((w)=>{
+      if(textValue.some((t)=>{
+        return t.toLowerCase()==w.word.toLowerCase()
+      })){
+        return {...w, "used":true}
+      }else{
+        return {...w, "used":false}
+      }
+    })
+    if(newWords.length>0 && !newWords.some((w)=>{
+
+      
+          return w.used==false
+    })){
+      handleButton(true)
+    }else{
+      handleButton(false)
+    }
+    setWords(newWords)}
+
+    setMessage({
+      "status":false,
+      "text": " "
+    })
+
+  },[textValue]) 
+
+
+  const handleTextToPass=function(t){
+    setTextToPass(t)
+  }
+
+  const handleMessage=function(t){
+    setMessage(t)
+  }
+ 
  
 
   return <aside className="challenge-board">
 
     <h1 onClick={()=>{
       handleContainer()
-    }}>Hâte d'un ptit défi?</h1>
+    }}>{webText.home?.challenge.challengeTitle}</h1>
 
     <div className={passClass()}>
-<h2>Fais girer la roulette pour chosir trois mots</h2>
+<h2 className={firstVisible?'':"hidden"}>{webText.home?.challenge.challengeSubtitle}</h2>
 
-<div className='roulette-container'>
+<div className={firstVisible?'roulette-container':"hidden"}>
   <img style={{transform:`rotate(${rotation}deg)`}} onClick={()=>{
 
     handleWords()
@@ -355,13 +467,32 @@ if(rotation>360*10){
   {words?.map((w)=>{
 
 
-    return <div className={wordsVisible?`word-challenge-visible-${w.time}`:`word-challenge-invisible`}>
+    return <div className={passWordClass(w)}>
       <p>{w.word}</p> 
     </div>
   })}
 </div>
 
-<input  className={textVisible?"text-challenge-container-visible":"text-challenge-container"} type="textarea" placeholder="C'était un temps..." />
+<button onClick={()=>{
+
+  const d=new Date()
+
+
+  handleAddBlog(textToPass,`${d.getDate()}/${d.getMonth()}/${d.getFullYear()}` ,"https://xsgames.co/randomusers/avatar.php?g=male" )
+  handleMessage({
+    "status":true,
+    "text":webText.home?.challenge.added
+  })
+}} className={buttonVisible?"challenge-button":"hidden"}>Ajouter au blog</button>
+
+<strong className={message.status?"blog-disclaimer":"hidden"}>{message.text}</strong>
+<textarea contentEditable={true} className={textVisible?"text-challenge-container-visible":"text-challenge-container"} placeholder={webText.home?.challenge.challengePlaceholder} 
+
+onChange={(e)=>{
+
+  handleTextValue(e.target.value)
+  handleTextToPass(e.target.value)
+}} />
 
 
 
@@ -373,19 +504,21 @@ if(rotation>360*10){
 
 export function Footer(){
 
+  const {webText}=useContext(WordsContext)
+
   return <footer>
 
     <div className='contact-info'>
-      <h1>Contacte</h1>
+      <h1>{webText.footer?.contact}</h1>
 
       <h2>David Sánchez</h2>
-      <h3>Communication et devéloppement</h3>
-      <h4>Madrid, Spagne</h4>
+      <h3>{webText.footer?.job}</h3>
+      <h4>Madrid, {webText.footer?.country}</h4>
     </div>
 
     <div className="links">
 
-      <h5>Links d'intérêt</h5>
+      <h5>{webText.footer?.links}</h5>
 
       <div className="link-container">
         <img src={linkedin} alt="" />
