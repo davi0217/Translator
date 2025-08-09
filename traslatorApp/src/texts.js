@@ -34,7 +34,8 @@ export const texts={
                 "challengeTitle":"Hâte pour un p'tit défi ?",
                 "challengeSubtitle":"Fais tourner la roulette pour choisir trois mots !",
                 "challengePlaceholder":"Utilise les trois mots pour écrire ton texte et vois le résultat",
-                "added":"Ton blog a été ajouté"
+                "added":"Ton blog a été ajouté",
+                "overload":"Tu ne peux pas avoir plus de cinq blogs"
 
             }
         },
@@ -64,7 +65,7 @@ export const texts={
                 "hangmanWinTitle": "Felicitations! Vous avez gagné",
                 "hangmanLoseTitle": "Désolé... Vous avez perdu",
                 "hangmanTime":"Temps utilisé: ",
-                "hangmanMinutes":"minutes et",
+                "hangmanMinutes":"min. et",
                 "hangmanSeconds":"secondes",
                 "hangmanReveal":"La parole était",
                 "hangmanExit":"Sortir"
@@ -72,13 +73,14 @@ export const texts={
 
             "blog":{
                 "blogTitle":"Voici ton blog",
-                "blogEmpty":"Vous n'avez rien écrit"
+                "blogEmpty":"Vous n'avez rien écrit",
+                "blogFooter":"Ajoute-en encore"
             }
         },
 
         "footer":{
             "contact":"Contacte",
-            "job":"Communication et devéloppement",
+            "job":"Communication et développement",
             "country":"Spagne",
             "links":"Links d'intérêt"
         },
@@ -126,7 +128,8 @@ export const texts={
             "challengeTitle": "¿Listo para un reto?",
             "challengeSubtitle": "Haz girar la ruleta para elegir tres palabras",
             "challengePlaceholder": "Usa las tres palabras para escribir tu texto y ver el resultado",
-            "added":"Se ha añadido tu blog"
+            "added":"Se ha añadido tu blog",
+            "overload":"No puedes tener más de cinco blogs"
         }
     },
     "comp": {
@@ -142,7 +145,7 @@ export const texts={
             "instructionsTime": "Tiempo",
             "instructionsAutomatique": "Automático",
             "instructionsButton": "Vamos",
-            "guessLeft": "restan",
+            "guessLeft": "...",
             "guessDisplayed": "Palabras mostradas"
         },
         "hangman": {
@@ -154,14 +157,15 @@ export const texts={
             "hangmanWinTitle": "¡Felicidades! Has ganado",
             "hangmanLoseTitle": "Lo siento... Has perdido",
             "hangmanTime": "Tiempo usado: ",
-            "hangmanMinutes": "minutos y",
+            "hangmanMinutes": "min. y",
             "hangmanSeconds": "segundos",
             "hangmanReveal": "La palabra era",
             "hangmanExit": "Salir"
         },
         "blog": {
             "blogTitle": "Lee tus blogs",
-            "blogEmpty": "No has escrito nada"
+            "blogEmpty": "No has escrito nada",
+            "blogFooter":"Añade más blogs"
         }
     },
     "footer": {

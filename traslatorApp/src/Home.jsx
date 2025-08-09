@@ -265,7 +265,7 @@ function Display({word, language}){
 
 function Challenge(){
 
-  const {data, handleAddBlog, webText}=useContext(WordsContext)
+  const {data, handleAddBlog, webText, entries}=useContext(WordsContext)
 
   const [containerVisible, setContainerVisible]=useState(false)
   const [wordsVisible, setWordsVisible]=useState(false)
@@ -384,7 +384,7 @@ if(rotation>360*10){
   }
 
   const handleTextValue=function(v){
-    let newValue=v.split(/[ ,'?!-.;\n]+/)
+    let newValue=v.split(/[ ,'?!.;\n]+/)
     setTextValue(newValue)
   }
 
@@ -410,7 +410,7 @@ if(rotation>360*10){
 
     let newWords=words.map((w)=>{
       if(textValue.some((t)=>{
-        return t.toLowerCase()==w.word.toLowerCase()
+        return t.toLowerCase().trim().includes(w.word.toLowerCase().trim())
       })){
         return {...w, "used":true}
       }else{
@@ -481,12 +481,12 @@ if(rotation>360*10){
   handleAddBlog(textToPass,`${d.getDate()}/${d.getMonth()}/${d.getFullYear()}` ,"https://xsgames.co/randomusers/avatar.php?g=male" )
   handleMessage({
     "status":true,
-    "text":webText.home?.challenge.added
+    "text": entries.length>=5?webText.home?.challenge.overload:webText.home?.challenge.added
   })
 }} className={buttonVisible?"challenge-button":"hidden"}>Ajouter au blog</button>
 
 <strong className={message.status?"blog-disclaimer":"hidden"}>{message.text}</strong>
-<textarea contentEditable={true} className={textVisible?"text-challenge-container-visible":"text-challenge-container"} placeholder={webText.home?.challenge.challengePlaceholder} 
+<textarea maxLength={4000} contentEditable={true} className={textVisible?"text-challenge-container-visible":"text-challenge-container"} placeholder={webText.home?.challenge.challengePlaceholder} 
 
 onChange={(e)=>{
 

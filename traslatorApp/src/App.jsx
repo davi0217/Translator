@@ -53,6 +53,10 @@ const handleWebText=function(lang){
 
 const handleAddBlog=function(text, date, img){
 
+    if(entries.length>=5){
+        return 
+    }
+
 
     let newBlogs=[]
 if(entries.length>0){

@@ -339,7 +339,7 @@ img{
 
 .game-box{
 
-    background-color: green;
+    background-color: rgb(170, 20, 4);
     width:40%;
     min-width:300px;
    
@@ -391,15 +391,19 @@ img{
     border-radius:15px;
 
     flex-wrap: wrap;   
+
+
 }
 
 .game-explanation{
     background-color: rgb(247, 243, 156);
-    width:100%;
+    
     border-radius:15px 15px 0px 0px;
     margin:0;
     height: 50%;
     padding-top:15px;
+    padding-left:5px;
+    padding-right:5px;
     font-size:15px;
     cursor:pointer;
    
@@ -517,8 +521,12 @@ img{
 
 .results-container{
     width:100%;
+    
    
     margin:0 auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .results-board .results-title{
@@ -528,6 +536,7 @@ img{
     padding-right:10px;
     padding-bottom:20px;
     width: 50%;
+    min-width:150px;
 margin:0 auto;
     background-color: rgb(229, 145, 11);
     margin-bottom:50px;
@@ -585,14 +594,13 @@ opacity:0
     background-color: brown;
     color:white;
     border-radius:5px;
-    width:50px;
+    width:85px;
 
     border:1px solid red;
     padding:5px;
-    position:relative;
-    top:0px;
-    left:80%;
+   margin:0 auto;
     margin-bottom:15px;
+    margin-top:15px;
   
 
 }
@@ -601,7 +609,7 @@ opacity:0
 
     min-height: 400px;
     background-color: rgb(254, 228, 228);
-    padding-bottom:50px;
+    
 }
 
 .blog-title{
@@ -615,8 +623,32 @@ align-items: end;
     background-color: rgb(254, 228, 228);
     margin:0 auto;
     border-radius:10px 10px 0px 0px;
+    padding-bottom:20px;
 
 }
+.blog-footer{
+    background-image: url("./assets/france.png");
+    height: 100px;
+    display: flex;
+align-items: start;
+
+}
+
+.blog-footer h1{
+    background-color: rgb(254, 228, 228);
+    margin:0 auto;
+    border-radius:0px 0px 10px 10px;
+    padding-bottom:20px;
+    width:100%;
+    padding-left:5px;
+    padding-right:5px;
+
+}
+
+.blog-footer h1:hover{
+    text-decoration: underline;
+}
+
 
 .entries-container{
 
@@ -629,6 +661,7 @@ align-items: end;
     gap:30px;
     padding:10px;
     margin-top:30px;
+    padding-bottom:50px;
 
 }
 
@@ -711,6 +744,23 @@ align-items: end;
     padding-left:10px;
 }
 
+.blog-footer-link{
+    text-decoration: none;
+    margin:0 auto;
+  
+  
+}
+
+.remove-blog-button{
+    cursor:crosshair;
+    padding:3px;
+
+}
+.remove-blog-button:hover{
+    border-radius:5px;
+background-color: red;
+transition:background-color 0.3s ease;
+}
 
 .hidden{
     display: none;
@@ -916,6 +966,23 @@ align-items: end;
     font-size: 13px;
 }
 
+.blog-title h1{
+    background-color: rgb(254, 228, 228);
+    margin:0 auto;
+    border-radius:10px 10px 0px 0px;
+    padding-bottom:0px;
+
+}
+
+.blog-footer h1{
+    background-color: rgb(254, 228, 228);
+    margin:0 auto;
+    border-radius:0px 0px 10px 10px;
+    padding-bottom:0px;
+
+    font-size:17px;
+
+}
 
 
 

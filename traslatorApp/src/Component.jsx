@@ -1,7 +1,7 @@
 import {useState,useRef, useEffect, useContext, useMemo} from 'react'
 
 import { useDisplayVerbes } from './useDisplayVerbes.js'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 
 import {Navigator} from './Home.jsx'
 import {Footer} from './Home.jsx'
@@ -86,6 +86,7 @@ export  default function Component(){
     </div>
 
     <button  className="startPlaying" onClick={()=>{
+        window.scrollTo(0,0)
         handleStartPlaying()
     }}>{webText.comp?.playButton}</button>
     
@@ -259,7 +260,7 @@ function Rules(){
             <tr>
                 <td>{webText.comp?.guess.instructionsTime}</td>
                 <td><select name="minutos" id="minutos">
-                    <option value={5} default>5 minutes</option>
+                    <option value={5} default>5  minutes</option>
                     <option value={10}>10 minutes</option>
                     <option value={15}>15 minutes</option>
                     </select></td>
@@ -480,6 +481,7 @@ function Hangman(){
     useEffect(()=>{
 
         if(mistakes.current>=7){
+                    window.scrollTo(0,0)
                     finishGame("lose")
                     return         
                 }
@@ -507,6 +509,7 @@ function Hangman(){
         if(!randomChars.some((d)=>{
             return d.showing==false
         })){
+            window.scrollTo(0,0)
             finishGame("win")
         }
 
@@ -622,7 +625,7 @@ return <aside className='results-board'>
 
         <h1 className='results-title'>{resultData.outcome=="win"?webText.comp?.hangman.hangmanWinTitle:webText.comp?.hangman.hangmanLoseTitle}</h1>
 
-        <h2 className={isVisible?" visible-subtitle":"results-subtitle"}> {webText.comp?.hangman.hangmanTime} <br />{(Math.floor(resultData.time/60))==0?"":Math.floor(resultData.time/60)+webText.comp?.hangman.hangmanMinutes }  {resultData.time%60} {webText.comp?.hangman.hangmanSeconds}</h2>
+        <h2 className={isVisible?" visible-subtitle":"results-subtitle"}> {webText.comp?.hangman.hangmanTime} <br />{(Math.floor(resultData.time/60))==0?"":Math.floor(resultData.time/60)+" " +webText.comp?.hangman.hangmanMinutes }  {resultData.time%60} {webText.comp?.hangman.hangmanSeconds}</h2>
 
         <h2 className={isVisible?"visible-little-title":"results-subtitle"}>{webText.comp?.hangman.hangmanReveal} <br /> {resultData.word}</h2>
    
@@ -697,5 +700,10 @@ function Blog(){
 }
 
 {entries.length==0 && <h1> {webText.comp?.blog.blogEmpty}</h1>}
+
+<div className="blog-footer">
+    <Link to="/" className='blog-footer-link' ><h1>{webText.comp?.blog.blogFooter}</h1></Link>
+        
+    </div>
     </>
 }

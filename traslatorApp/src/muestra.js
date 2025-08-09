@@ -35,16 +35,6 @@ export const wordsList=[
     "category": "Verbe"
   },
   {
-    "original": "À plus",
-    "translation": "Nos vemos",
-    "category": "Façons"
-  },
-  {
-    "original": "Vas-y",
-    "translation": "Adelante",
-    "category": "Façons"
-  },
-  {
     "original": "Changer",
     "translation": "Cambiar",
     "category": "Verbe"
@@ -60,11 +50,6 @@ export const wordsList=[
     "category": "Adjectif"
   },
   {
-    "original": "À bientôt",
-    "translation": "Hasta pronto",
-    "category": "Façons"
-  },
-  {
     "original": "Joli",
     "translation": "Bonito",
     "category": "Adjectif"
@@ -78,11 +63,6 @@ export const wordsList=[
     "original": "Lent",
     "translation": "Lento",
     "category": "Adjectif"
-  },
-  {
-    "original": "Bien joué",
-    "translation": "Bien hecho",
-    "category": "Façons"
   },
   {
     "original": "Nettoyer",
@@ -150,11 +130,6 @@ export const wordsList=[
     "category": "Façons"
   },
   {
-    "original": "Bravo",
-    "translation": "Bravo",
-    "category": "Façons"
-  },
-  {
     "original": "Vieux",
     "translation": "Viejo",
     "category": "Adjectif"
@@ -200,11 +175,6 @@ export const wordsList=[
     "category": "Vocabulaire"
   },
   {
-    "original": "Merci",
-    "translation": "Gracias",
-    "category": "Façons"
-  },
-  {
     "original": "Livre",
     "translation": "Libro",
     "category": "Vocabulaire"
@@ -225,11 +195,6 @@ export const wordsList=[
     "category": "Verbe"
   },
   {
-    "original": "Pas du tout",
-    "translation": "Para nada",
-    "category": "Façons"
-  },
-  {
     "original": "Cuisiner",
     "translation": "Cocinar",
     "category": "Verbe"
@@ -248,11 +213,6 @@ export const wordsList=[
     "original": "Pain",
     "translation": "Pan",
     "category": "Vocabulaire"
-  },
-  {
-    "original": "D'accord",
-    "translation": "De acuerdo",
-    "category": "Façons"
   },
   {
     "original": "Ouvert",
@@ -320,11 +280,6 @@ export const wordsList=[
     "category": "Adjectif"
   },
   {
-    "original": "Zut",
-    "translation": "Caramba",
-    "category": "Façons"
-  },
-  {
     "original": "Gentil",
     "translation": "Gentil",
     "category": "Adjectif"
@@ -345,11 +300,6 @@ export const wordsList=[
     "category": "Vocabulaire"
   },
   {
-    "original": "S'il te plaît",
-    "translation": "Por favor",
-    "category": "Façons"
-  },
-  {
     "original": "Facile",
     "translation": "Fácil",
     "category": "Adjectif"
@@ -365,29 +315,9 @@ export const wordsList=[
     "category": "Verbe"
   },
   {
-    "original": "Ça va",
-    "translation": "Todo bien",
-    "category": "Façons"
-  },
-  {
-    "original": "Tiens",
-    "translation": "Toma",
-    "category": "Façons"
-  },
-  {
-    "original": "Désolé",
-    "translation": "Lo siento",
-    "category": "Façons"
-  },
-  {
     "original": "Conduire",
     "translation": "Conducir",
     "category": "Verbe"
-  },
-  {
-    "original": "À demain",
-    "translation": "Hasta mañana",
-    "category": "Façons"
   },
   {
     "original": "Maintenant",
@@ -510,11 +440,6 @@ export const wordsList=[
     "category": "Verbe"
   },
   {
-    "original": "Bon matin",
-    "translation": "Buenos días",
-    "category": "Façons"
-  },
-  {
     "original": "Sec",
     "translation": "Seco",
     "category": "Adjectif"
@@ -573,11 +498,6 @@ export const wordsList=[
     "original": "Parfois",
     "translation": "A veces",
     "category": "Adverbe"
-  },
-  {
-    "original": "Bonne nuit",
-    "translation": "Buenas noches",
-    "category": "Façons"
   },
   {
     "original": "Viande",
@@ -639,11 +559,7 @@ export const wordsList=[
     "translation": "Lanzar",
     "category": "Verbe"
   },
-  {
-    "original": "De rien",
-    "translation": "De nada",
-    "category": "Façons"
-  },
+  
   {
     "original": "Encore",
     "translation": "Todavía",
@@ -774,11 +690,7 @@ export const wordsList=[
     "translation": "Sentir",
     "category": "Verbe"
   },
-  {
-    "original": "Au revoir",
-    "translation": "Adiós",
-    "category": "Façons"
-  },
+  
   {
     "original": "Content",
     "translation": "Contento",
@@ -789,11 +701,7 @@ export const wordsList=[
     "translation": "Escuela",
     "category": "Vocabulaire"
   },
-  {
-    "original": "Viens ici",
-    "translation": "Ven aquí",
-    "category": "Façons"
-  },
+  
   {
     "original": "Ailleurs",
     "translation": "En otro lugar",

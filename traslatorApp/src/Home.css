@@ -181,6 +181,7 @@ input[type="submit"]{
 }
 
 .self-introduction-form{
+    cursor:pointer;
     border-radius:10px 0px 0px 10px;
     border:1px solid brown;
     border-right:none;
@@ -476,6 +477,7 @@ align-items: center;
 .word-challenge-visible-1-green, .word-challenge-visible-2-green, .word-challenge-visible-3-green{
     background-color: green;
     width:20%;
+    
     border-radius:10px;
     transform:translateY((0px,150px));
     
@@ -781,8 +783,8 @@ strong{
     }
 
     .subtitle{
-        
-        width:100%;
+        margin-top:10px;
+        width:90%;
         padding-top:10px;
        
         
@@ -862,8 +864,12 @@ strong{
         height: 700px;
     }
 
+    .challenge-button{
+        font-size:18px;
+    }
+
     .select-lang{
-        top:230px;
+        top:250px;
     }
 }
 
@@ -876,12 +882,18 @@ strong{
            top:0px;
            left:5%;
            margin-top:10px;
+           margin-bottom:10px;
 
     }
+    textarea{
+    font-size:17px;
+}
+
 
 }
 
 @media(max-width:350px){
+
     .challenge-container-visible-2{
         height: 780px;
     }
@@ -899,14 +911,19 @@ strong{
         border-radius:10px;
         align-self: center;
         
+        
     }
 
     .word-challenge-visible-1-green, .word-challenge-visible-2-green, .word-challenge-visible-3-green{
     background-color: green;
-    width:30%;
+    width:20%;
+    height: auto;
+    line-break: anywhere;
     min-width:100px;
     border-radius:10px;
     transform:translateY((0px,150px));
+    padding-right:3px;
+    padding-left:3px;
     }
 
     .challenge-button{
