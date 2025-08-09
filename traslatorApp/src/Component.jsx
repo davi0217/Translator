@@ -392,7 +392,7 @@ function Hangman(){
     const {formattedVerbes, webText}=useContext(WordsContext)
     const [playing, setPlaying]=useState(true)
 
-    const [randomWord, setRandomWord]=useState(formattedVerbes[Math.floor(Math.random()*formattedVerbes.length)].original.toLowerCase())
+    const [randomWord, setRandomWord]=useState(formattedVerbes[Math.floor(Math.random()*formattedVerbes.length)].original.toLowerCase().trim())
 
     const [randomChars, setRandomChars]=useState([...randomWord].map((l)=>{
         return {"letter":l,
@@ -519,8 +519,7 @@ function Hangman(){
 
     const checkLetter=function(l, letterIndex){
 
-        console.log(l +" is the char we are checking")
-        console.log("right now, the index is "+letterIndex)
+       
         let newChars= randomChars.map((c, index)=>{
             if(letterIndex==index){
                 console.log("we are comparing "+c.letter+" with "+l)
@@ -570,7 +569,9 @@ function Hangman(){
                    
             }</span></p>
                 <h3>{mistakes.current}/7 {webText.comp?.hangman.hangmanError} {wrongLetters.current.length>0 && ":"} <br />
+                    {wrongLetters.current.length==0 && <span style={{color:"red"}}>-----</span>}
                     {wrongLetters.current.length>0 && wrongLetters.current.map((l)=>{
+                        
                         return <span style={{color:"red"}}>{l+" - "}</span>
                     })}
                 </h3>
@@ -699,7 +700,7 @@ function Blog(){
     </div>
 }
 
-{entries.length==0 && <h1> {webText.comp?.blog.blogEmpty}</h1>}
+{entries.length==0 && <h1 className="blog-empty"> {webText.comp?.blog.blogEmpty}</h1>}
 
 <div className="blog-footer">
     <Link to="/" className='blog-footer-link' ><h1>{webText.comp?.blog.blogFooter}</h1></Link>

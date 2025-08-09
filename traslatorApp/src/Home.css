@@ -721,6 +721,7 @@ strong{
 
     .loading-message{
         margin-top:-90px;
+        line-break:strict;
     }
     
     .translation h1{
@@ -801,7 +802,7 @@ strong{
 
     .loading-message{
         font-size: 18px;
-        line-break: anywhere;
+        line-break: normal;
     }
     
     .self-introduction-form{
