@@ -110,7 +110,7 @@ export const texts={
         "subtitle": "Traduce automáticamente las palabras que quieras y guárdalas en tu propio espacio personal",
         "inputs": {
             "categoryLabel": "Elige la categoría",
-            "categories": ["Verbo", "Adjetivo", "Adverbio", "Vocabulario"],
+            "categories": ["Verbe", "Adjectif", "Adverbe", "Vocabulaire"],
             "langLabel": "Idioma",
             "lang1": "Francés a español",
             "lang2": "Español a francés",

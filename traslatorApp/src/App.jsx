@@ -12,7 +12,7 @@ export default function App({children}){
     
     
     const words=JSON.parse(localStorage.getItem("words"))
-    const [data, setData]= useState(words?words:wordsList) 
+    const [data, setData]= useState(words.length>1?words:wordsList) 
     const [playingGame, setPlayingGame]=useState(false)
     const [ffilter, setFilter]=useState("Verbe")
     const [wordFromUrl, setWordFromUrl]=useState("")
